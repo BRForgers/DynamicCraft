@@ -1,7 +1,6 @@
 ## Windows
 Thumbs.db
 
-<<<<<<< HEAD
 ## gradle
 /.gradle
 /build
@@ -12,21 +11,23 @@ Thumbs.db
 /build
 
 
->>>>>>> 3f9090130fa3489e79ae3551e0e6656a1d1dd846
 ## ForgeGradle
 /run
 
 ## NetBeans
 /nbbuild
 /nbproject
-<<<<<<< HEAD
 build.xml
 
-## eclipse
-=======
+## NetBeans ProjectMC
+/config
+/crash-reports
+/mods
+/logs
+/saves
+/resourcepacks
 
 ## Eclipse
->>>>>>> 3f9090130fa3489e79ae3551e0e6656a1d1dd846
 /.settings
 /.metadata
 /.classpath
@@ -45,7 +46,6 @@ build.xml
 ## Private Stuffs
 /private.properties
 
-<<<<<<< HEAD
 ## Jars
 *.jar
 !/gradle/wrapper/gradle-wrapper.jar
@@ -56,8 +56,6 @@ build.xml
 .AppleDouble
 .LSOverride
 
-=======
->>>>>>> 3f9090130fa3489e79ae3551e0e6656a1d1dd846
 # Icon must end with two \r
 Icon
 
@@ -79,8 +77,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
-<<<<<<< HEAD
-=======
 
 
 ### OSX (adds a lot of garbage)###
@@ -96,4 +92,3 @@ Temporary Items
 !/libs
 !/libs/*.jar
 /mergedSrc
->>>>>>> 3f9090130fa3489e79ae3551e0e6656a1d1dd846

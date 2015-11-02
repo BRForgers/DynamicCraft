@@ -1,6 +1,7 @@
 package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.lib.Strings;
+import brazillianforgers.lib.MathUtils;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -23,7 +24,9 @@ public class DynamicCraft {
         
     @Mod.EventHandler
     public static void preLoad(FMLPreInitializationEvent event) {
-		
+        int test = MathUtils.getNextPowerOf2(2);
+        
+	System.out.println("[DynamicCraft] " + test);
     }
 	
     @Mod.EventHandler
