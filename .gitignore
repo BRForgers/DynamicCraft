@@ -9,6 +9,10 @@ Thumbs.db
 ## ForgeGradle
 /run
 
+## NetBeans
+/nbbuild
+/nbproject
+
 ## Eclipse
 /.settings
 /.metadata
