@@ -1,11 +1,15 @@
 package brazillianforgers.dynamiccraft;
 
+import brazillianforgers.dynamiccraft.items.ItemHandler;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -31,7 +35,8 @@ public class DynamicCraft {
         //Init Logger
         log.info("Start Loading...");
         
-        
+        Common.registerEntities();
+        ItemHandler.init();
         
         //End Logger
         log.info("All Pre-Init modules enabled!");
@@ -46,5 +51,11 @@ public class DynamicCraft {
     public static void postLoad(FMLPostInitializationEvent e) {
 		
     }
+    
+    public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
+	public Item getTabIconItem() {
+            return Items.diamond;
+	}
+    };
     
 }

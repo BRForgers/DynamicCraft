@@ -20,6 +20,9 @@ build.xml
 /logs
 /saves
 /resourcepacks
+/asm
+usernamecache.json
+options.txt
 
 ## Eclipse
 /.settings
