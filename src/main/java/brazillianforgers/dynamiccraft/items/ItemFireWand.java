@@ -8,9 +8,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class FireWand extends BaseItem{
+public class ItemFireWand extends BaseItem{
     
-    public FireWand() {
+    public ItemFireWand() {
         setCreativeTab(DynamicCraft.dynamicTab);
         setMaxStackSize(1);
 	setHasSubtypes(true);

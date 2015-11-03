@@ -12,7 +12,7 @@ public class ItemHandler {
     public static Item fireWand;
     
     public static void initializeItems() {
-        fireWand = new FireWand().setUnlocalizedName("fireWand");
+        fireWand = new ItemFireWand().setUnlocalizedName("fireWand");
     }
     
     public static void registerItems() {
