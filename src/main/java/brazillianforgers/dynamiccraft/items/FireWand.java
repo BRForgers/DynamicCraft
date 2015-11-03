@@ -1,7 +1,7 @@
 package brazillianforgers.dynamiccraft.items;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
-import brazillianforgers.dynamiccraft.entities.FireBall;
+import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.lib.ItemNBTHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,7 +28,7 @@ public class FireWand extends BaseItem{
             item.damageItem(1, player);
             
             if(!world.isRemote) {
-                world.spawnEntityInWorld(new FireBall(player.worldObj, player));
+                world.spawnEntityInWorld(new EntityFireBall(player.worldObj, player));
             }
             
             ItemNBTHelper.setInt(item, "timer", 0);

@@ -35,6 +35,7 @@ public class DynamicCraft {
         //Init Logger
         log.info("Start Loading...");
         
+        Client.registerRender();
         Common.registerEntities();
         ItemHandler.init();
         
