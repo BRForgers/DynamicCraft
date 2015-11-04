@@ -41,8 +41,9 @@ public class RenderFireWand implements IItemRenderer{
                    
                 GL11.glRotatef(110, 0F, 1F, 0F);
                 GL11.glRotatef(130, 1F, 0F, 0F);
-                GL11.glRotatef(20, 1F, 0F, 1F);
-                GL11.glTranslatef(-0.1F, -0.7F, -0.6F);
+                GL11.glRotatef(30, 1F, 0F, 1F);
+                GL11.glTranslatef(0.2F, -1.3F, -0.6F);
+                GL11.glScalef(1.5F, 1.5F, 1.5F);
                     
                 this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
                    
@@ -55,9 +56,10 @@ public class RenderFireWand implements IItemRenderer{
                    
                 GL11.glRotatef(110, 0F, 1F, 0F);
                 GL11.glRotatef(130, 1F, 0F, 0F);
-                GL11.glRotatef(20, 1F, 0F, 1F);
-                GL11.glTranslatef(-0.1F, -0.7F, -0.6F);
-                    
+                GL11.glRotatef(30, 1F, 0F, 1F);
+                GL11.glTranslatef(0.2F, -1.3F, -0.6F);
+                GL11.glScalef(1.5F, 1.5F, 1.5F);
+                
                 this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
                    
                 GL11.glPopMatrix();
