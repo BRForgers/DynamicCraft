@@ -24,7 +24,7 @@ public class EntityFireBall extends EntityThrowable{
     */
     @Override
     protected void onImpact(MovingObjectPosition movObjPos) {
-        float power = 3;
+        float power = 2;
         
         if (!this.worldObj.isRemote) {
             this.worldObj.newExplosion((Entity)null, this.posX, this.posY, this.posZ, power, true, false);
