@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.lib.StringHelper;
 
 public class UpdateHandler {
 	
@@ -14,13 +15,10 @@ public class UpdateHandler {
 	
 	private static void getNewestVersion() {
 		try {
-			URL url = new URL("https://raw.githubusercontent.com/TheBrazillianForgersTeam/DynamicCraft/master/updatedVersion.txt");
-			Scanner scan = new Scanner(url.openStream());
-			newestVersion = scan.next();
-			scan.close();
+			newestVersion = StringHelper.getStringFromURL(new URL("https://raw.githubusercontent.com/TheBrazillianForgersTeam/DynamicCraft/master/updatedVersion.txt"));
 		}catch (IOException e) {
 			e.printStackTrace();
-			DynamicCraft.log.error("Could not connect to URL Update!");
+			DynamicCraft.log.error("Could not connect to Registry Update!");
 		}
 	}
 	
