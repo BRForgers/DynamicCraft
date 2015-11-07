@@ -1,6 +1,6 @@
 package brazillianforgers.dynamiccraft.entities;
 
-import brazillianforgers.dynamiccraft.items.ItemHandler;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;

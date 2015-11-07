@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.dynamiccraft.entities.EntityWizard;
-import brazillianforgers.dynamiccraft.items.ItemHandler;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.renders.RenderFireBall;
 import brazillianforgers.dynamiccraft.renders.RenderFireWand;
 import brazillianforgers.dynamiccraft.renders.RenderWizard;

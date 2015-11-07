@@ -1,6 +1,6 @@
 package brazillianforgers.dynamiccraft;
 
-import brazillianforgers.dynamiccraft.items.ItemHandler;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -17,7 +18,7 @@ import org.apache.logging.log4j.Logger;
  * @author BrazillianForgers Team
  */
 
-@Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = "required-after:BRForgersCore@[1.0, 2.0]")
+@Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
 public class DynamicCraft {
     
     static Logger log;
