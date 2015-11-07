@@ -1,7 +1,10 @@
 package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
+import brazillianforgers.dynamiccraft.handler.UpdateHandler;
+import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
 import brazillianforgers.dynamiccraft.lib.Strings;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -21,7 +24,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
 public class DynamicCraft {
     
-    static Logger log;
+    public static Logger log;
     
     @Mod.Instance(Strings.MODID)
     public static DynamicCraft mod;
@@ -46,12 +49,12 @@ public class DynamicCraft {
 	
     @Mod.EventHandler
     public static void load(FMLInitializationEvent e) {
-        
+    	FMLCommonHandler.instance().bus().register(new HandlerClient());
     }
 	
     @Mod.EventHandler 
     public static void postLoad(FMLPostInitializationEvent e) {
-		
+		UpdateHandler.init();
     }
     
     public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
