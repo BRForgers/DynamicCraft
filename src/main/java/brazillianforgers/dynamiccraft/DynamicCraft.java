@@ -1,8 +1,6 @@
 package brazillianforgers.dynamiccraft;
 
-import brazillianforgers.dynamiccraft.handler.ItemHandler;
-import brazillianforgers.dynamiccraft.handler.UpdateHandler;
-import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
+import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -54,7 +52,7 @@ public class DynamicCraft {
 	
     @Mod.EventHandler 
     public static void postLoad(FMLPostInitializationEvent e) {
-		UpdateHandler.init();
+	UpdateHandler.init();
     }
     
     public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
