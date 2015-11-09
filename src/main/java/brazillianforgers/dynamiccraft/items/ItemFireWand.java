@@ -13,8 +13,8 @@ public class ItemFireWand extends BaseItem{
     public ItemFireWand() {
         setCreativeTab(DynamicCraft.dynamicTab);
         setMaxStackSize(1);
-	setHasSubtypes(true);
-	setMaxDamage(10);
+		setHasSubtypes(true);
+		setMaxDamage(10);
     }
     
     public int getTimer(ItemStack item) {

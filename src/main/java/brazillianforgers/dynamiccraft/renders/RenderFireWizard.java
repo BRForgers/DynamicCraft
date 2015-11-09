@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft.renders;
 
 import org.lwjgl.opengl.GL11;
 
-import brazillianforgers.dynamiccraft.entities.EntityWizard;
+import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
@@ -10,22 +10,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderWizard extends RenderBiped {
+public class RenderFireWizard extends RenderBiped {
 	
     private static final ResourceLocation mobTextures = new ResourceLocation(Strings.MODID + ":textures/model/ModelWizard.png");
     
-    public RenderWizard(ModelBiped par1ModelBase, float par2) {
+    public RenderFireWizard(ModelBiped par1ModelBase, float par2) {
         super(par1ModelBase, par2);
     }
     
-    protected ResourceLocation getEntityTexture(EntityWizard par1EntityThief) {
+    protected ResourceLocation getEntityTexture(EntityFireWizard par1EntityThief) {
         return mobTextures;
     }
  
     @Override
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
-        return this.getEntityTexture((EntityWizard)par1Entity);
+        return this.getEntityTexture((EntityFireWizard)par1Entity);
     }
     
     @Override

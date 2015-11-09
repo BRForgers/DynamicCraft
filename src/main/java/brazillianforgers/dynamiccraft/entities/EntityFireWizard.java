@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityWizard extends EntityMob{
+public class EntityFireWizard extends EntityMob{
 	
-    public EntityWizard(World world) {
+    public EntityFireWizard(World world) {
 		super(world);
 		isImmuneToFire = true;
     }
