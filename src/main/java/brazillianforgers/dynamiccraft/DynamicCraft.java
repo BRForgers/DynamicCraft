@@ -2,6 +2,7 @@ package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
+import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -12,6 +13,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 
 import org.apache.logging.log4j.Logger;
 
@@ -49,11 +51,12 @@ public class DynamicCraft {
     @Mod.EventHandler
     public static void load(FMLInitializationEvent e) {
     	FMLCommonHandler.instance().bus().register(new HandlerClient());
+    	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
     }
 	
     @Mod.EventHandler 
     public static void postLoad(FMLPostInitializationEvent e) {
-	UpdateHandler.init();
+    	UpdateHandler.init();
     }
     
     public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
