@@ -4,6 +4,7 @@ import java.util.Random;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
 import brazillianforgers.dynamiccraft.handler.BlockHandler;
+import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -21,7 +22,7 @@ public class BlockInfusionAltar extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
-		return null;
+		return new TileEntityInfusionAltar();
 	}
 
 	@Override
