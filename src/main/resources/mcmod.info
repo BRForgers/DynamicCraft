@@ -11,6 +11,6 @@
   "credits": "The Brazillian Forgers Team.",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [BRForgersCore]
 }
 ]
