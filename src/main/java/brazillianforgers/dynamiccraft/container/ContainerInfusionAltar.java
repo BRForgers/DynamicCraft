@@ -1,15 +1,20 @@
 package brazillianforgers.dynamiccraft.container;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
 public class ContainerInfusionAltar extends Container{
 
 	private TileEntityInfusionAltar altar;
+	private int lastProgressTime;
+	private int lastPowerTime;
 	
 	public ContainerInfusionAltar(InventoryPlayer inventoryPlayer, TileEntityInfusionAltar tilealtar) {
 		this.altar = tilealtar;
@@ -29,6 +34,51 @@ public class ContainerInfusionAltar extends Container{
 
 		for (i = 0; i < 9; ++i) {
 	            this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+		}
+	}
+	
+	public void addCraftingToCrafters(ICrafting par1ICrafting)
+	{
+		super.addCraftingToCrafters(par1ICrafting);
+		par1ICrafting.sendProgressBarUpdate(this, 0, this.altar.processTime);
+		par1ICrafting.sendProgressBarUpdate(this, 1, this.altar.magic);
+	}
+
+	/**
+	 * Looks for changes made in the container, sends them to every listener.
+	 */
+	public void detectAndSendChanges() {
+		super.detectAndSendChanges();
+
+		for (int i = 0; i < this.crafters.size(); ++i)
+		{
+			ICrafting icrafting = (ICrafting)this.crafters.get(i);
+
+			if (this.lastProgressTime != this.altar.processTime)
+			{
+				icrafting.sendProgressBarUpdate(this, 0, this.altar.processTime);
+			}
+
+			if (this.lastPowerTime != this.altar.magic)
+			{
+				icrafting.sendProgressBarUpdate(this, 1, this.altar.magic);
+			}
+		}
+
+		this.lastProgressTime = this.altar.processTime;
+		this.lastPowerTime = this.altar.magic;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void updateProgressBar(int par1, int par2) {
+		if (par1 == 0)
+		{
+			this.altar.processTime = par2;
+		}
+
+		if (par1 == 1)
+		{
+			this.altar.magic = par2;
 		}
 	}
 

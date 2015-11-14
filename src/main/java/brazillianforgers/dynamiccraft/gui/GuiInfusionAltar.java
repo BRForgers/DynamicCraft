@@ -14,10 +14,12 @@ import net.minecraft.util.ResourceLocation;
 public class GuiInfusionAltar extends GuiContainer{
 	
 	private static final ResourceLocation texture = new ResourceLocation("dynamiccraft", "textures/gui/infusionaltar.png");
-
+	private TileEntityInfusionAltar altar;
+	
 	public GuiInfusionAltar(InventoryPlayer invPlayer, TileEntityInfusionAltar entity) {
 		super(new ContainerInfusionAltar(invPlayer, entity));
 		
+		this.altar = entity;
 		this.xSize = 176;
 		this.ySize = 165;
 	}
@@ -31,6 +33,16 @@ public class GuiInfusionAltar extends GuiContainer{
 			
 		drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
+		int i1;
+
+		if(this.altar.hasPower()){
+			i1 = this.altar.getMagicRemainingScaled(47);
+			
+			this.drawTexturedModalRect(guiLeft + 11, guiTop + 57 - i1, 177, 47 - i1, 9, i1);
+		}
+		
+		i1 = this.altar.getProgressScaled(28);
+		this.drawTexturedModalRect(guiLeft + 66, guiTop + 24, 187, 0, 59, i1);
 	}
 
 }
