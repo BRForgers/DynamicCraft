@@ -23,7 +23,7 @@ public class RenderInfusionAltar extends TileEntitySpecialRenderer{
     
     public static RenderInfusionAltar instance;
     
-    public static ResourceLocation texture = new ResourceLocation(Strings.MODID + ":textures/models/ModelInfusionAltar.png");
+    public static ResourceLocation texture = new ResourceLocation(Strings.MODID + ":textures/model/ModelInfusionAltar.png");
 	
     public RenderInfusionAltar() {
         model = new ModelInfusionAltar();
@@ -44,27 +44,30 @@ public class RenderInfusionAltar extends TileEntitySpecialRenderer{
         
         if(altar.getStackInSlot(4) == null && altar.getStackInSlot(2) != null) {
         	stack = altar.getStackInSlot(2);
-        }else if(altar.getStackInSlot(4) != null)
+        }else if(altar.getStackInSlot(4) != null) {
         	stack = altar.getStackInSlot(4);
-        
-        EntityItem entItem = new EntityItem(Minecraft.getMinecraft().theWorld, 0D, 0D, 0D, stack);
-        
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float)x + 0.5F,(float)y + 0.85F,(float)z + 0.5F);
-        GL11.glRotatef(360,0,1,1);
-        entItem.hoverStart = 0.0F;
-        
-        if(entItem.getEntityItem().getItem() instanceof ItemBlock && Block.getBlockFromItem(entItem.getEntityItem().getItem()).isBlockNormalCube()) {
-            GL11.glScalef(1.3F, 1.3F, 1.3F);
         }
         
-        GL11.glEnable(GL11.GL_CULL_FACE);
-        if(Minecraft.isFancyGraphicsEnabled()) {
-            float rotationAngle=(float)(720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
-            GL11.glRotatef(rotationAngle,0F,1F,0F);
+        if(altar.getStackInSlot(2) != null || altar.getStackInSlot(4) != null) {
+        	EntityItem entItem = new EntityItem(Minecraft.getMinecraft().theWorld, 0D, 0D, 0D, stack);
+        	
+        	GL11.glPushMatrix();
+            GL11.glTranslatef((float)x + 0.5F,(float)y + 0.85F,(float)z + 0.5F);
+            GL11.glRotatef(360,0,1,1);
+            entItem.hoverStart = 0.0F;
+            
+            if(entItem.getEntityItem().getItem() instanceof ItemBlock && Block.getBlockFromItem(entItem.getEntityItem().getItem()).isBlockNormalCube()) {
+                GL11.glScalef(1.3F, 1.3F, 1.3F);
+            }
+            
+            GL11.glEnable(GL11.GL_CULL_FACE);
+            if(Minecraft.isFancyGraphicsEnabled()) {
+                float rotationAngle=(float)(720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
+                GL11.glRotatef(rotationAngle,0F,1F,0F);
+            }
+            RenderManager.instance.renderEntityWithPosYaw(entItem, 0, 0, 0, 0, 0);
+       
+            GL11.glPopMatrix();
         }
-        RenderManager.instance.renderEntityWithPosYaw(entItem, 0, 0, 0, 0, 0);
-   
-        GL11.glPopMatrix();
     }
 }

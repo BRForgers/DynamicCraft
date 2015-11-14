@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityInfusionAltar extends TileEntity implements ISidedInventory{
 
-	private static final int[] slots_sides = new int[] {0, 1, 2, 3, 4};
+	private static final int[] slots_sides = new int[] {1, 2, 3};
 	private ItemStack[] slots = new ItemStack[5];
 	
 	@Override

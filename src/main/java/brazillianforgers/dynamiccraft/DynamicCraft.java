@@ -24,6 +24,8 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
 public class DynamicCraft {
+	
+	public static final int guiIdInfusion = 8;
     
     public static Logger log;
     
@@ -41,7 +43,9 @@ public class DynamicCraft {
         log.info("Start Loading...");
         
         ItemHandler.init();
+        BlockHandler.init();
         Common.registerEntities();
+        Common.registerNetworkStuff();
         Client.registerRender();
         
         //End Logger
