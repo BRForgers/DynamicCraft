@@ -15,7 +15,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	private static final int[] slots_sides = new int[] {1, 2, 3};
 	private ItemStack[] slots = new ItemStack[5];
 	
-	public int processSpeed = 100;
+	public int processSpeed = 400;
 	public int magic;
 	public int maxMagic = 800;
 	
@@ -159,6 +159,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 
     @Override
     public void updateEntity() {
+    	System.out.println(magic);
 	    boolean flag = this.magic > 0;
 		boolean flag1 = false;
 	
@@ -215,10 +216,11 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	}
     
     private boolean canSmelt(){
-		if (this.slots[1] == null) {
+		if (this.slots[1] == null || slots[2] == null || slots[3] == null) {
 			return false;
 		} else {
-			ItemStack itemstack = InfusionRecipes.smelting().getSmeltingResult(this.slots[1]);
+			ItemStack itemstack = InfusionRecipes.getSmeltingResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
+			
 			if (itemstack == null) return false;
 			if (this.slots[4] == null) return true;
 			if (!this.slots[4].isItemEqual(itemstack)) return false;
@@ -229,7 +231,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     
 	public void smeltItem(){
     	if (this.canSmelt()) {
-			ItemStack itemstack = InfusionRecipes.smelting().getSmeltingResult(this.slots[1]);
+			ItemStack itemstack = InfusionRecipes.getSmeltingResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
 
 			if (this.slots[4] == null) {
 				this.slots[4] = itemstack.copy();
@@ -237,11 +239,9 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 				this.slots[4].stackSize += itemstack.stackSize;
 			}
 			
-			--this.slots[1].stackSize;
-			
-			if(this.slots[1].stackSize <= 1){
-				this.slots[1] = null;
-			}
+			this.slots[1] = null;
+			this.slots[2] = null;
+			this.slots[3] = null;
 		}
 	}
 }

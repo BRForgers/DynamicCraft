@@ -48,6 +48,8 @@ public class DynamicCraft {
         Common.registerNetworkStuff();
         Client.registerRender();
         
+        InfusionRecipes.registerRecipes();
+        
         //End Logger
         log.info("All Pre-Init modules enabled!");
     }
