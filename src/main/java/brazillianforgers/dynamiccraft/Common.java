@@ -7,6 +7,7 @@ import brazillianforgers.dynamiccraft.entities.EntityHandler;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
 import brazillianforgers.dynamiccraft.handler.GuiHandler;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
+import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;

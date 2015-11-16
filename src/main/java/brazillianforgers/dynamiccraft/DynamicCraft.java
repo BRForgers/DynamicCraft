@@ -4,12 +4,14 @@ import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
 import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
 import brazillianforgers.dynamiccraft.lib.Strings;
+import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -62,6 +64,7 @@ public class DynamicCraft {
 	
     @Mod.EventHandler 
     public static void postLoad(FMLPostInitializationEvent e) {
+    	GameRegistry.registerWorldGenerator(new WorldGenerator(), 1);
     	UpdateHandler.init();
     }
     

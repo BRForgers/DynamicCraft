@@ -52,7 +52,7 @@ public class RenderInfusionAltar extends TileEntitySpecialRenderer{
         	EntityItem entItem = new EntityItem(Minecraft.getMinecraft().theWorld, 0D, 0D, 0D, stack);
         	
         	GL11.glPushMatrix();
-            GL11.glTranslatef((float)x + 0.5F,(float)y + 0.85F,(float)z + 0.5F);
+            GL11.glTranslatef((float)x + 0.5F,(float)y + 1.25F,(float)z + 0.5F);
             GL11.glRotatef(360,0,1,1);
             entItem.hoverStart = 0.0F;
             
