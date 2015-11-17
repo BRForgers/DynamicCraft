@@ -2,11 +2,15 @@ package brazillianforgers.dynamiccraft.container;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import brazillianforgers.dynamiccraft.container.slot.SlotInfusionMiddle;
+import brazillianforgers.dynamiccraft.container.slot.SlotInfusionPower;
+import brazillianforgers.dynamiccraft.container.slot.SlotInfusionResult;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
@@ -16,24 +20,24 @@ public class ContainerInfusionAltar extends Container{
 	private int lastProgressTime;
 	private int lastPowerTime;
 	
-	public ContainerInfusionAltar(InventoryPlayer inventoryPlayer, TileEntityInfusionAltar tilealtar) {
+	public ContainerInfusionAltar(InventoryPlayer inv, TileEntityInfusionAltar tilealtar) {
 		this.altar = tilealtar;
         
-        this.addSlotToContainer(new Slot(tilealtar, 0, 8, 62));
+        this.addSlotToContainer(new SlotInfusionPower(tilealtar, 0, 8, 62));
         this.addSlotToContainer(new Slot(tilealtar, 1, 53, 16));
-        this.addSlotToContainer(new Slot(tilealtar, 2, 89, 6));
+        this.addSlotToContainer(new SlotInfusionMiddle(tilealtar, 2, 89, 6));
         this.addSlotToContainer(new Slot(tilealtar, 3, 125, 16));
-        this.addSlotToContainer(new Slot(tilealtar, 4, 88, 57));
+        this.addSlotToContainer(new SlotInfusionResult(tilealtar, 4, 88, 57));
         
         int i;
         for (i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
-                this.addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+                this.addSlotToContainer(new Slot(inv, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
 
 		for (i = 0; i < 9; ++i) {
-	            this.addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
+	            this.addSlotToContainer(new Slot(inv, i, 8 + i * 18, 142));
 		}
 	}
 	
@@ -101,20 +105,14 @@ public class ContainerInfusionAltar extends Container{
                             if (!this.mergeItemStack(itemstack1, altar.getSizeInventory(), 36+altar.getSizeInventory(), true)) {
                                 return null;
                             }
-                        }else if(itemstack1.stackSize > 1) {
-                            itemstack.stackSize -= (itemstack.stackSize - 1);
-                            Slot slt = (Slot) this.inventorySlots.get(0);
-                            if(!slt.getHasStack()) {
-                                if (this.mergeItemStack(itemstack, 0, altar.getSizeInventory(), false)) {
-                                    itemstack1.stackSize -= 1;
+                        }else {
+                        	Slot p = (Slot)this.inventorySlots.get(0);
+                        	if(p.isItemValid(itemstack1)) {
+                        		if (!this.mergeItemStack(itemstack1, 0, altar.getSizeInventory(), false)) {
                                     return null;
                                 }
-                                return null;
-                            }
-                            slot.onSlotChange(itemstack1, itemstack);
-                            return null;
-                        }else {
-                            if (!this.mergeItemStack(itemstack1, 0, altar.getSizeInventory(), false)) {
+                        	}
+                        	if (!this.mergeItemStack(itemstack1, 1, altar.getSizeInventory(), false)) {
                                 return null;
                             }
                         }

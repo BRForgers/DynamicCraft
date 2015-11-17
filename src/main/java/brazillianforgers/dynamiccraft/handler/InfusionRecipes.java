@@ -1,7 +1,9 @@
 package brazillianforgers.dynamiccraft.handler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -9,10 +11,10 @@ import net.minecraft.item.ItemStack;
 
 public class InfusionRecipes {
 	
-	private static List<Item> first = new ArrayList<Item>();
+	private static List<Item> fireRune = new ArrayList<Item>();
 	
 	public static void registerRecipes() {
-		addRecipe(first, Items.iron_ingot, Items.diamond, Items.gold_ingot);
+		addRecipe(fireRune, Items.iron_ingot, Items.diamond, Items.gold_ingot);
 	}
 	
 	private static void addRecipe(List<Item> list, Item item, Item item2, Item item3) {
@@ -27,8 +29,8 @@ public class InfusionRecipes {
 
 	public static ItemStack getOutput(Item item, Item item2, Item item3) {
 		
-		if(first.contains(item) && first.contains(item2) && first.contains(item3)) {
-			return new ItemStack(Items.bone, 1);
+		if(fireRune.contains(item) && fireRune.get(1) == item2 && fireRune.contains(item3)) {
+			return new ItemStack(ItemHandler.fireRune, 1);
 		}
 		return null;
 	}

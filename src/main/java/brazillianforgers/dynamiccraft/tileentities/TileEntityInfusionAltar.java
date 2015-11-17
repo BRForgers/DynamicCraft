@@ -53,13 +53,13 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     }
     
     @Override
-    public int[] getAccessibleSlotsFromSide(int p_94128_1_) {
+    public int[] getAccessibleSlotsFromSide(int side) {
         return slots_sides;
     }
 
     @Override
-    public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_, int p_102007_3_) {
-        return true;
+    public boolean canInsertItem(int slot, ItemStack stk, int side) {
+        return isItemValidForSlot(slot, stk);
     }
 
     @Override
@@ -136,7 +136,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 
     @Override
     public int getInventoryStackLimit() {
-        return 1;
+        return 64;
     }
 
     @Override
@@ -153,13 +153,12 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     }
 
     @Override
-    public boolean isItemValidForSlot(int p_94041_1_, ItemStack stack) {
-        return stack != null;
+    public boolean isItemValidForSlot(int slot, ItemStack stack) {
+        return slot == 4? false : (slot == 0? getItemPower(stack) > 0 : true);
     }
 
     @Override
     public void updateEntity() {
-    	System.out.println(magic);
 	    boolean flag = this.magic > 0;
 		boolean flag1 = false;
 	

@@ -24,7 +24,7 @@ public class BlockDynamicOre extends Block{
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		for (int i = 0; i <=5; i++) {
-			icons[i] = iconRegister.registerIcon(Strings.MODID + ":" + getUnlocalizedName());
+			icons[i] = iconRegister.registerIcon(Strings.MODID + ":oreDynamic");
 		}
 		
 	}

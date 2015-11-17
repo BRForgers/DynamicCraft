@@ -5,10 +5,10 @@
   "description": "Dynamic Craft mod!",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "http://brazillianforgers.esy.es/",
   "updateUrl": "",
-  "authorList": ["Whyssky_BR(Rennancge)", "TheFreeHigh", "armelin1"],
-  "credits": "The Brazillian Forgers Team.",
+  "authorList": ["BrazillianForgers Team", "Whyssky_BR(Rennancge)"],
+  "credits": "Whyssky_BR",
   "logoFile": "",
   "screenshots": [],
   "dependencies": [BRForgersCore]

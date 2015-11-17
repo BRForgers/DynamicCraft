@@ -39,20 +39,18 @@ public class DynamicCraft {
         
     @Mod.EventHandler
     public static void preLoad(FMLPreInitializationEvent e) {
-        //Get Logger
         log = e.getModLog();
-        //Init Logger
         log.info("Start Loading...");
         
         ItemHandler.init();
         BlockHandler.init();
+        
         Common.registerEntities();
         Common.registerNetworkStuff();
         Client.registerRender();
         
         InfusionRecipes.registerRecipes();
         
-        //End Logger
         log.info("All Pre-Init modules enabled!");
     }
 	
