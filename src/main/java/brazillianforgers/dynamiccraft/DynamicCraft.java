@@ -11,7 +11,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLStateEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -47,9 +49,11 @@ public class DynamicCraft {
         
         Common.registerEntities();
         Common.registerNetworkStuff();
-        Client.registerRender();
-        
         InfusionRecipes.registerRecipes();
+        
+        if(e.getSide() == Side.CLIENT) {
+        	Client.init();
+        }
         
         log.info("All Pre-Init modules enabled!");
     }

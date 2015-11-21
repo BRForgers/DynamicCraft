@@ -10,11 +10,17 @@ import brazillianforgers.dynamiccraft.renders.RenderInfusionAltar;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.event.FMLStateEvent;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class Client extends Common{
+	
+	public static void init() {
+		registerRender();
+		registerRenderHandler();
+	}
     
     public static void registerRender() {
         RenderingRegistry.registerEntityRenderingHandler(EntityFireBall.class, new RenderFireBall());
