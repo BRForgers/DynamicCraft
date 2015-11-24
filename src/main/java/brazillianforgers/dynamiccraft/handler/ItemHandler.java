@@ -12,19 +12,22 @@ public class ItemHandler {
     }
     
     public static Item fireWand;
+    public static Item baseRune;
     public static Item aquaRune;
     public static Item fireRune;
     public static Item earthRune;
     
     public static void initializeItems() {
         fireWand = new ItemFireWand().setUnlocalizedName("fireWand");
-        aquaRune = new ItemRune(1);
-        fireRune = new ItemRune(2);
-        earthRune = new ItemRune(3);
+        baseRune = new ItemRune(1);
+        aquaRune = new ItemRune(2);
+        fireRune = new ItemRune(3);
+        earthRune = new ItemRune(4);
     }
     
     public static void registerItems() {
         GameRegistry.registerItem(fireWand, fireWand.getUnlocalizedName());
+        GameRegistry.registerItem(baseRune, baseRune.getUnlocalizedName());
         GameRegistry.registerItem(aquaRune, aquaRune.getUnlocalizedName());
         GameRegistry.registerItem(fireRune, fireRune.getUnlocalizedName());
         GameRegistry.registerItem(earthRune, earthRune.getUnlocalizedName());

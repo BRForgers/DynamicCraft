@@ -14,6 +14,7 @@ public class ItemRune extends BaseItem {
 	private RuneType type;
 	
 	public enum RuneType {
+		BASE,
 		AQUA,
 		FIRE,
 		EATH;
@@ -26,15 +27,17 @@ public class ItemRune extends BaseItem {
 		setMaxDamage(20);
 
 		switch(i) {
-			case 1:
+			case 2:
 				this.type = RuneType.AQUA;
 				break;
-			case 2:
+			case 3:
 				this.type = RuneType.FIRE;
 				break;
-			case 3:
+			case 4:
 				this.type = RuneType.EATH;
 				break;
+			case 1:
+				this.type = RuneType.BASE;
 		}
 		
 		setName();
@@ -47,6 +50,8 @@ public class ItemRune extends BaseItem {
 			setUnlocalizedName("fireRune");
 		}else if(type == RuneType.EATH) {
 			setUnlocalizedName("earthRune");
+		}else if(type == RuneType.BASE) {
+			setUnlocalizedName("baseRune");
 		}
 	}
 	
