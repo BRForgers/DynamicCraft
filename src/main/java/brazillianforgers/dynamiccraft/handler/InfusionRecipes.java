@@ -14,7 +14,7 @@ public class InfusionRecipes {
 	private static List<Item> fireRune = new ArrayList<Item>();
 	
 	public static void registerRecipes() {
-		addRecipe(fireRune, Items.iron_ingot, Items.diamond, Items.gold_ingot);
+		addRecipe(fireRune, Items.iron_ingot, ItemHandler.baseRune, Items.gold_ingot);
 	}
 	
 	private static void addRecipe(List<Item> list, Item item, Item item2, Item item3) {

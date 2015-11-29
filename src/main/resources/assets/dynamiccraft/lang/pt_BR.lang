@@ -1,6 +1,10 @@
 itemGroup.dynamicTab=Dynamic Craft
 
 item.fireWand.name=Cajado de fogo
+item.baseRune.name=Base de runa
+item.fireRune.name=Runa de fogo
+item.aquaRune.name=Runa de água
+item.earthRune.name=Runa da terra
 
-tile.oreDynamic.name=Min�rio Dynamic
-tile.blockInfusionAltar.name=Altar de Infus�o
+tile.oreDynamic.name=Minério Dinâmico
+tile.blockInfusionAltar.name=Altar de infusão

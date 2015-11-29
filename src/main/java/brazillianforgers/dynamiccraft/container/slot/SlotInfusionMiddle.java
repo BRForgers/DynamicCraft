@@ -1,9 +1,12 @@
 package brazillianforgers.dynamiccraft.container.slot;
 
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
+import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 
 public class SlotInfusionMiddle extends Slot{
 
@@ -18,5 +21,10 @@ public class SlotInfusionMiddle extends Slot{
 	@Override
 	public int getSlotStackLimit() {
         return 1;
+    }
+	
+	@Override
+	public boolean isItemValid(ItemStack stack){
+        return stack.getItem() == ItemHandler.baseRune;
     }
 }
