@@ -2,36 +2,72 @@ package brazillianforgers.dynamiccraft.handler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class InfusionRecipes {
 	
-	private static List<Item> fireRune = new ArrayList<Item>();
+	private HashMap<ItemStack, List<Item>> recipes = new HashMap<ItemStack,List<Item>>();
 	
-	public static void registerRecipes() {
-		addRecipe(fireRune, Items.iron_ingot, ItemHandler.baseRune, Items.gold_ingot);
+	//Arrays
+	private List<Item> fireRune = new ArrayList<Item>();
+	private List<Item> aquaRune = new ArrayList<Item>();
+	private List<Item> earthRune = new ArrayList<Item>();
+	
+	private static final InfusionRecipes SMELTING_BASE = new InfusionRecipes();
+	public static InfusionRecipes smelting() {
+		return SMELTING_BASE;
 	}
 	
-	private static void addRecipe(List<Item> list, Item item, Item item2, Item item3) {
+	private static InfusionRecipes instance = new InfusionRecipes();
+	public static InfusionRecipes getInstance() {
+		return instance;
+	}
+	
+	public HashMap getRecipeList() {
+		return recipes;
+	}
+	
+	private InfusionRecipes() {
+		addRecipe(new ItemStack(ItemHandler.fireRune, 1), fireRune, Items.flint, ItemHandler.baseRune, Items.fire_charge);
+		addRecipe(new ItemStack(ItemHandler.aquaRune, 1), aquaRune, Items.potionitem, ItemHandler.baseRune, Items.diamond_helmet);
+		addRecipe(new ItemStack(ItemHandler.earthRune, 1), earthRune, Items.sugar, ItemHandler.baseRune, Item.getItemById(2));
+	}
+	
+	private void addRecipe(ItemStack result, List<Item> list, Item item, Item item2, Item item3) {
 		list.add(item);
 		list.add(item2);
 		list.add(item3);
-	}
-	
-	public static ItemStack getSmeltingResult(Item item, Item item2, Item item3) {
-		return getOutput(item, item2, item3);
+		
+		recipes.put(result, list);
 	}
 
-	public static ItemStack getOutput(Item item, Item item2, Item item3) {
+	public ItemStack getResult(Item item, Item item2, Item item3) {
+		List<Item> list = new ArrayList();
+		list.add(item);
+		list.add(item2);
+		list.add(item3);
 		
-		if(fireRune.contains(item) && fireRune.get(1) == item2 && fireRune.contains(item3)) {
-			return new ItemStack(ItemHandler.fireRune, 1);
-		}
-		return null;
+		Iterator iterator = recipes.entrySet().iterator();
+		Entry entry;
+
+		do {
+			if (!iterator.hasNext()) {
+				return null;
+			}
+			entry = (Entry) iterator.next();
+		} while (!canBe(list, (List<Item>)entry.getValue()));
+		return (ItemStack) entry.getKey();
+	}
+	
+	private boolean canBe(List<Item> list, List<Item> recipeList) {
+		return recipeList.contains(list.get(0)) && recipeList.get(1) == list.get(1) && recipeList.contains(list.get(2));
 	}
 }

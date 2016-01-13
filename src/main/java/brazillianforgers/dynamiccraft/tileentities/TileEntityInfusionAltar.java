@@ -218,7 +218,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 		if (this.slots[1] == null || slots[2] == null || slots[3] == null) {
 			return false;
 		} else {
-			ItemStack itemstack = InfusionRecipes.getSmeltingResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
+			ItemStack itemstack = InfusionRecipes.smelting().getResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
 			
 			if (itemstack == null) return false;
 			if (this.slots[4] == null) return true;
@@ -230,7 +230,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     
 	public void smeltItem(){
     	if (this.canSmelt()) {
-			ItemStack itemstack = InfusionRecipes.getSmeltingResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
+			ItemStack itemstack = InfusionRecipes.smelting().getResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
 
 			if (this.slots[4] == null) {
 				this.slots[4] = itemstack.copy();

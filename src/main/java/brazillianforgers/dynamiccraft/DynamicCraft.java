@@ -23,7 +23,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * DynamicCraft Mod
- * @author BrazillianForgers Team
+ * @author BrazillianForgers Team - By: rennancge (Whyssky_BR)
  */
 
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
@@ -49,7 +49,6 @@ public class DynamicCraft {
         
         Common.registerEntities();
         Common.registerNetworkStuff();
-        InfusionRecipes.registerRecipes();
         
         if(e.getSide() == Side.CLIENT) {
         	Client.init();
@@ -72,7 +71,7 @@ public class DynamicCraft {
     
     public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
 		public Item getTabIconItem() {
-	            return Items.diamond;
+	            return ItemHandler.fireWand;
 		}
     };
     
