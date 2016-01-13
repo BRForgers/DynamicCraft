@@ -3,6 +3,7 @@ package brazillianforgers.dynamiccraft.blocks;
 import java.util.Random;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -41,12 +42,21 @@ public class BlockDynamicOre extends Block{
 	@Override
 	public int quantityDropped(Random rand) {
         rand = new Random();
-        int q = rand.nextInt(3) + 1;
+        int q = rand.nextInt(5) + 1;
         return q;
     }
 
-    public Item getItemDropped(int i, Random rand, int j) {
-        return Item.getItemFromBlock(this);
+	@Override
+    public Item getItemDropped(int i, Random rand, int i2) {
+		rand = new Random();
+		int item = rand.nextInt(3) + 1;
+		
+		switch(item) {
+			case 1:
+				return ItemHandler.dynamicPearl;
+			default:
+				return ItemHandler.dynamicShard;
+		}
     }
 
 }

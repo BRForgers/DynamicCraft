@@ -13,6 +13,7 @@ import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import brazillianforgers.dynamiccraft.gui.GuiInfusionAltar;
 import brazillianforgers.dynamiccraft.handler.InfusionRecipes;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Items;
@@ -157,7 +158,8 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
             if (!efuels.contains(item.getItem())) {
                 int burnTime = TileEntityInfusionAltar.getItemPower(item);
                 if (burnTime > 0)
-                    afuels.add(new FuelPair(new ItemStack(Items.coal), burnTime));
+                    afuels.add(new FuelPair(new ItemStack(ItemHandler.dynamicPearl), burnTime));
+                	afuels.add(new FuelPair(new ItemStack(ItemHandler.dynamicShard), burnTime));
             }
     }
 

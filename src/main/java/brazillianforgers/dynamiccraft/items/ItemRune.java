@@ -13,34 +13,25 @@ public class ItemRune extends BaseItem {
 	
 	private RuneType type;
 	
-	public enum RuneType {
+	public static enum RuneType {
 		BASE,
 		AQUA,
 		FIRE,
 		EATH;
 	}
 	
-	public ItemRune(int i) {
+	public ItemRune(RuneType type) {
 		setCreativeTab(DynamicCraft.dynamicTab);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 		setMaxDamage(20);
 
-		switch(i) {
-			case 2:
-				this.type = RuneType.AQUA;
-				break;
-			case 3:
-				this.type = RuneType.FIRE;
-				break;
-			case 4:
-				this.type = RuneType.EATH;
-				break;
-			case 1:
-				this.type = RuneType.BASE;
-		}
-		
+		this.type = type;
 		setName();
+	}
+	
+	public RuneType getType() {
+		return type;
 	}
 	
 	public void setName() {

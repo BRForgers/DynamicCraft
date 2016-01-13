@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
-import brazillianforgers.lib.StringHelper;
+import brazillianforgers.lib.IOHelper;
 
 public class UpdateHandler {
 	
@@ -15,7 +15,7 @@ public class UpdateHandler {
 	
 	private static void getNewestVersion() {
 		try {
-			newestVersion = StringHelper.getStringFromURL(new URL("https://raw.githubusercontent.com/TheBrazillianForgersTeam/DynamicCraft/master/updatedVersion.txt"));
+			newestVersion = IOHelper.getStringFromURL(new URL("https://raw.githubusercontent.com/TheBrazillianForgersTeam/DynamicCraft/master/updatedVersion.txt"));
 		}catch (IOException e) {
 			e.printStackTrace();
 			DynamicCraft.log.error("Could not connect to Registry Update!");

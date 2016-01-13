@@ -1,6 +1,7 @@
 package brazillianforgers.dynamiccraft.tileentities;
 
 import brazillianforgers.dynamiccraft.handler.InfusionRecipes;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -209,7 +210,8 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     	}else{
     		ItemStack i = par0ItemStack;
     	
-    		if (i.getItem() == Items.apple) return 50;
+    		if (i.getItem() == ItemHandler.dynamicPearl) return 50;
+    		if (i.getItem() == ItemHandler.dynamicShard) return 10;
         	return 0;
     	}
 	}
@@ -238,9 +240,14 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 				this.slots[4].stackSize += itemstack.stackSize;
 			}
 			
-			this.slots[1] = null;
+			this.slots[1].stackSize--;
 			this.slots[2] = null;
-			this.slots[3] = null;
+			this.slots[3].stackSize--;
+			
+			if(slots[1].stackSize == 0)
+				slots[1] = null;
+			if(slots[3].stackSize == 0)
+				slots[3] = null;
 		}
 	}
 }

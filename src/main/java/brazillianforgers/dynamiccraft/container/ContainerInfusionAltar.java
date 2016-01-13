@@ -96,37 +96,35 @@ public class ContainerInfusionAltar extends Container{
 		ItemStack itemstack = null;
 		Slot slot = (Slot)this.inventorySlots.get(slotn);
 
-		if (slot != null && slot.getHasStack())
-		{
+		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
+			
+			if (slotn < altar.getSizeInventory()) {
+				if (!this.mergeItemStack(itemstack1, 5, inventorySlots.size(), true)) {
+					return null;
+				}
+			}else {
+				Slot p = (Slot)this.inventorySlots.get(0);
+				if(p.isItemValid(itemstack1) && !this.mergeItemStack(itemstack1, 0, altar.getSizeInventory() - 1, false)) {
+					return null;
+				}else if(!p.isItemValid(itemstack1)){
+					if (!this.mergeItemStack(itemstack1, 1, altar.getSizeInventory() - 1, false)) {
+						return null;
+					}
+				}
+			}
                         
-                        if (slotn < altar.getSizeInventory()) {
-                            if (!this.mergeItemStack(itemstack1, altar.getSizeInventory(), 36+altar.getSizeInventory(), true)) {
-                                return null;
-                            }
-                        }else {
-                        	Slot p = (Slot)this.inventorySlots.get(0);
-                        	if(p.isItemValid(itemstack1)) {
-                        		if (!this.mergeItemStack(itemstack1, 0, altar.getSizeInventory(), false)) {
-                                    return null;
-                                }
-                        	}
-                        	if (!this.mergeItemStack(itemstack1, 1, altar.getSizeInventory(), false)) {
-                                return null;
-                            }
-                        }
-                        
-                        if (itemstack1.stackSize == 0) {
-                                slot.putStack(null);
-                        }else {
-                                slot.onSlotChanged();
-                        }
-
-                        if (itemstack1.stackSize == itemstack.stackSize) {
-                                return null;
-                        }
-                        slot.onPickupFromSlot(player, itemstack1);
+			if (itemstack1.stackSize <= 0) {
+				slot.putStack(null);
+			}else {
+				slot.onSlotChanged();
+			}
+			
+			if (itemstack1.stackSize == itemstack.stackSize) {
+                        	return null;
+			}
+			slot.onPickupFromSlot(player, itemstack1);
 		}
 
 		return itemstack;

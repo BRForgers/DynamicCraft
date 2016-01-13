@@ -5,6 +5,11 @@ item.baseRune.name=Base Rune
 item.fireRune.name=Fire Rune
 item.aquaRune.name=Aqua Rune
 item.earthRune.name=Earth Rune
+item.dynamicPearl.name=Dynamic Pearl
+item.dynamicShard.name=Dynamic Pearl Shard
 
 tile.oreDynamic.name=Dynamic ore
 tile.blockInfusionAltar.name=Infusion Altar
+
+item.dynamicShard.description.magic=Magic
+item.dynamicPearl.description.magic=Magic

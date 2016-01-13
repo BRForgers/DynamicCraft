@@ -5,6 +5,11 @@ item.baseRune.name=Base de runa
 item.fireRune.name=Runa de fogo
 item.aquaRune.name=Runa de água
 item.earthRune.name=Runa da terra
+item.dynamicPearl.name=Pérola Dynamic
+item.dynamicShard.name=Pedaço de Pérola Dynamic
 
 tile.oreDynamic.name=Minério Dinâmico
 tile.blockInfusionAltar.name=Altar de infusão
+
+item.dynamicShard.description.magic=Mágica
+item.dynamicPearl.description.magic=Mágica

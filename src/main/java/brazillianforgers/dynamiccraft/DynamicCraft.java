@@ -71,7 +71,7 @@ public class DynamicCraft {
     
     public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
 		public Item getTabIconItem() {
-	            return ItemHandler.fireWand;
+	            return ItemHandler.dynamicPearl;
 		}
     };
     
