@@ -1,5 +1,7 @@
 package brazillianforgers.dynamiccraft.tileentities;
 
+import brazillianforgers.dynamiccraft.api.DynamicCraftAPI;
+import brazillianforgers.dynamiccraft.api.infusion.InfusionAltarFuel;
 import brazillianforgers.dynamiccraft.handler.InfusionRecipes;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -205,15 +207,20 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     }
     
     public static int getItemPower(ItemStack par0ItemStack){
-    	if (par0ItemStack == null){
-        	return 0;
-    	}else{
+    	if (par0ItemStack != null){
     		ItemStack i = par0ItemStack;
-    	
+        	
     		if (i.getItem() == ItemHandler.dynamicPearl) return 50;
     		if (i.getItem() == ItemHandler.dynamicShard) return 10;
+    		
+    		for (InfusionAltarFuel fuel : DynamicCraftAPI.infusionAltarFuel) {
+				if (fuel.fuelItem.isItemEqual(i)) return fuel.fuelAmount;
+			}
+    		
         	return 0;
     	}
+        
+    	return 0;
 	}
     
     private boolean canSmelt(){
