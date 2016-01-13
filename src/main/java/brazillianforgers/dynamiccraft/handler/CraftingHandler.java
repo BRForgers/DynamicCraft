@@ -17,10 +17,10 @@ public class CraftingHandler{
 	
 	private void registerRecipe() {
 		addRecipe(new ItemStack(BlockHandler.infusionAltar), new Object[] {
-			"BDB",
-			"POP",
-			"OPO", 'B', new ItemStack(Blocks.iron_bars), 'D', new ItemStack(Items.diamond), 'P', new ItemStack(ItemHandler.dynamicPearl),
-					'O', new ItemStack(Blocks.obsidian)
+			"B B",
+			"QPQ",
+			"PEP", 'B', new ItemStack(Blocks.iron_bars), 'E', new ItemStack(Blocks.enchanting_table), 'P', new ItemStack(ItemHandler.dynamicPearl),
+					'Q', new ItemStack(Items.quartz)
 		});
 	}
 	

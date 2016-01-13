@@ -20,14 +20,7 @@ public class RenderFireWand implements IItemRenderer{
 
     @Override
     public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-        switch(type){
-            case EQUIPPED: 
-                return true;
-            case EQUIPPED_FIRST_PERSON: 
-                return true;
-            default: 
-                return false;
-        }
+        return true;
     }
 
     @Override
@@ -63,13 +56,19 @@ public class RenderFireWand implements IItemRenderer{
                 this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
                    
                 GL11.glPopMatrix();
+                
             default:
-                break;
+            	 if(type == IItemRenderer.ItemRenderType.ENTITY)
+         			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+
+
+                 this.wand.render(null, 0, 0, 0, 0, 0, 0.0625F);
+            	break;
         }
     }
 
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-        return false;
+        return true;
     }
 }

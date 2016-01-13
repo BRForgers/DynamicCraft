@@ -35,7 +35,7 @@ public class GuiInfusionAltar extends GuiContainer{
 		
 		int i1;
 
-		if(this.altar.hasPower()){
+		if(this.altar.hasMagic()){
 			i1 = this.altar.getMagicRemainingScaled(47);
 			
 			this.drawTexturedModalRect(guiLeft + 11, guiTop + 57 - i1, 177, 47 - i1, 9, i1);

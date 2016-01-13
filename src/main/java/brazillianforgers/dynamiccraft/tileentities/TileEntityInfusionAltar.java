@@ -33,7 +33,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     	return this.magic * par1 / this.maxMagic;
 	}
 
-	public boolean hasPower() {
+	public boolean hasMagic() {
     	return this.magic > 0;
 	}
 
@@ -165,8 +165,8 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	    boolean flag = this.magic > 0;
 		boolean flag1 = false;
 	
-		if (hasPower() && isActive()){
-	    		this.magic-=2;
+		if (hasMagic() && isActive()){
+	    	this.magic-=2;
 		}
 	
 		if (!this.worldObj.isRemote){
@@ -184,7 +184,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	        	}                
 	    	}
 	
-	    	if (this.hasPower() && this.canSmelt())
+	    	if (this.hasMagic() && this.canSmelt())
 	    	{
 	        	++this.processTime;
 	

@@ -15,8 +15,9 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
 
-public class RenderInfusionAltar extends TileEntitySpecialRenderer{
+public class RenderInfusionAltar extends TileEntitySpecialRenderer implements IItemRenderer{
 
 	private final ModelInfusionAltar model;
     ItemStack stack;
@@ -24,15 +25,18 @@ public class RenderInfusionAltar extends TileEntitySpecialRenderer{
     public static RenderInfusionAltar instance;
     
     public static ResourceLocation texture = new ResourceLocation(Strings.MODID + ":textures/model/ModelInfusionAltar.png");
+    
+    private TileEntity tile;
 	
-    public RenderInfusionAltar() {
+    public RenderInfusionAltar(TileEntity ent) {
+    	tile = ent;
         model = new ModelInfusionAltar();
         instance = this;
     }
     
 	@Override
     public void renderTileEntityAt(TileEntity ent, double x, double y, double z, float f) {
-        TileEntityInfusionAltar altar = (TileEntityInfusionAltar) ent;
+		TileEntityInfusionAltar altar = (TileEntityInfusionAltar) ent;
         
         Minecraft.getMinecraft().renderEngine.bindTexture(texture);
         
@@ -70,4 +74,24 @@ public class RenderInfusionAltar extends TileEntitySpecialRenderer{
             GL11.glPopMatrix();
         }
     }
+
+	@Override
+	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+		return true;
+	}
+
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item,
+			ItemRendererHelper helper) {
+		return true;
+	}
+
+	@Override
+	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		if(type == IItemRenderer.ItemRenderType.ENTITY)
+			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
+
+
+		this.renderTileEntityAt(this.tile, 0.0D, 0.0D, 0.0D, 0.0F);
+	}
 }
