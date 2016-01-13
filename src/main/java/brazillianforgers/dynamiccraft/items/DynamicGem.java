@@ -38,7 +38,9 @@ public class DynamicGem extends BaseItem{
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
 		String cshift = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString()
 				+ StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(itemStack) + ".description.magic").trim()
-				+ ": " + TileEntityInfusionAltar.getItemPower(new ItemStack(this));
+				+ ": " + TileEntityInfusionAltar.getItemPower(itemStack);
+		String cshift2 = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Stack: " + TileEntityInfusionAltar.getItemPower(itemStack) * itemStack.stackSize;
+		
 		String sshift = EnumChatFormatting.DARK_PURPLE +  "<Press Shift>";
 		
 		if(!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
@@ -47,6 +49,7 @@ public class DynamicGem extends BaseItem{
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
 			list.add(cshift);
+			list.add(cshift2);
 		}
 	}
 	

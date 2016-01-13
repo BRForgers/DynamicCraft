@@ -27,4 +27,5 @@ public class Common {
     public static void registerNetworkStuff() {
     	NetworkRegistry.INSTANCE.registerGuiHandler(DynamicCraft.mod, new GuiHandler());
     }
+    
 }

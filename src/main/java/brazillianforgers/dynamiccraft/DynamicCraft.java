@@ -1,10 +1,10 @@
 package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.handler.*;
-import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
-import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
+import brazillianforgers.dynamiccraft.handler.events.*;
 import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
+import brazillianforgers.lib.RecipeHelper.RecipeHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
@@ -61,6 +61,8 @@ public class DynamicCraft {
     public static void load(FMLInitializationEvent e) {
     	FMLCommonHandler.instance().bus().register(new HandlerClient());
     	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
+    	
+    	new CraftingHandler();
     }
 	
     @Mod.EventHandler 
