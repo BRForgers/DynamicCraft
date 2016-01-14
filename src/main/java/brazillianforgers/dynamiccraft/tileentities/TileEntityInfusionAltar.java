@@ -1,5 +1,7 @@
 package brazillianforgers.dynamiccraft.tileentities;
 
+import java.util.Random;
+
 import brazillianforgers.dynamiccraft.api.DynamicCraftAPI;
 import brazillianforgers.dynamiccraft.api.infusion.InfusionAltarFuel;
 import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
@@ -23,6 +25,8 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	public int maxMagic = 800;
 	
 	public int processTime;
+	
+	Random rand = new Random();
 	
 	@SideOnly(Side.CLIENT)
 	public int getProgressScaled(int par1) {
@@ -167,6 +171,27 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	
 		if (hasMagic() && isActive()){
 	    	this.magic-=2;
+	    	
+	    	if(this.getWorldObj().isRemote) {
+	    		
+	    		
+		    	double f1 = rand.nextDouble() - 0.5;
+		    	double f2 = rand.nextDouble() - 0.5;
+		    	double f3 = rand.nextDouble() - 0.5;
+		    	
+		    	double x = this.xCoord;
+		    	double y = this.yCoord;
+		    	double z = this.zCoord;
+						
+		    	for(int i = 0; i <= 3; i++) {
+		    		worldObj.spawnParticle("enchantmenttable", x + 1, y + 0.5, z + 0.5, f1, f2, f3);
+		    		worldObj.spawnParticle("enchantmenttable", x, y + 0.5, z + 0.5, f1, f2, f3);
+		    		worldObj.spawnParticle("enchantmenttable", x + 0.5, y + 1, z + 0.5, f1, f2, f3);
+		    		worldObj.spawnParticle("enchantmenttable", x + 0.5, y, z + 0.5, f1, f2, f3);
+		    		worldObj.spawnParticle("enchantmenttable", x + 0.5, y + 0.5, z + 1, f1, f2, f3);
+		    		worldObj.spawnParticle("enchantmenttable", x + 0.5, y + 0.5, z, f1, f2, f3);
+		    	}
+	    	}
 		}
 	
 		if (!this.worldObj.isRemote){

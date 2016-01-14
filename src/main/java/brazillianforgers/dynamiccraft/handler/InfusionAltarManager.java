@@ -43,9 +43,6 @@ public class InfusionAltarManager {
 	private static List<ItemStack> generateRecipeList(ItemStack item1, ItemStack item2, ItemStack item3)
 	{
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		item1.stackSize = 1;
-		item2.stackSize = 1;
-		item3.stackSize = 1;
 		list.add(item1);
 		list.add(item2);
 		list.add(item3);

@@ -16,8 +16,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockInfusionAltar extends BlockContainer{
-	
-	private TileEntityInfusionAltar tile;
 
 	public BlockInfusionAltar() {
 		super(Material.rock);
@@ -25,29 +23,10 @@ public class BlockInfusionAltar extends BlockContainer{
 		setCreativeTab(DynamicCraft.dynamicTab);
         setHardness(6F);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
-		if(tile != null && tile.isActive() && tile.hasMagic()) {
-			double f1 = rand.nextDouble() - 0.5;
-			double f2 = rand.nextDouble() - 0.5;
-			double f3 = rand.nextDouble() - 0.5;
-				
-			for(int i = 0; i <= 3; i++) {
-				world.spawnParticle("enchantmenttable", x + 1, y + 0.5, z + 0.5, f1, f2, f3);
-				world.spawnParticle("enchantmenttable", x, y + 0.5, z + 0.5, f1, f2, f3);
-				world.spawnParticle("enchantmenttable", x + 0.5, y + 1, z + 0.5, f1, f2, f3);
-				world.spawnParticle("enchantmenttable", x + 0.5, y, z + 0.5, f1, f2, f3);
-				world.spawnParticle("enchantmenttable", x + 0.5, y + 0.5, z + 1, f1, f2, f3);
-				world.spawnParticle("enchantmenttable", x + 0.5, y + 0.5, z, f1, f2, f3);
-			}
-		}
-	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int i) {
-		tile = new TileEntityInfusionAltar();
-		return tile;
+		return new TileEntityInfusionAltar();
 	}
 
 	@Override

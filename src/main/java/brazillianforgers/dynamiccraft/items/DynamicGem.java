@@ -49,7 +49,9 @@ public class DynamicGem extends BaseItem{
 		
 		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
 			list.add(cshift);
-			list.add(cshift2);
+			
+			if(itemStack.stackSize > 1)
+				list.add(cshift2);
 		}
 	}
 	
