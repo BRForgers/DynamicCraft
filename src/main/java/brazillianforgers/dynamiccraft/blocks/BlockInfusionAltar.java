@@ -28,7 +28,7 @@ public class BlockInfusionAltar extends BlockContainer{
 	
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
-		if(this.tile.isActive() && this.tile.hasMagic()) {
+		if(tile != null && tile.isActive() && tile.hasMagic()) {
 			double f1 = rand.nextDouble() - 0.5;
 			double f2 = rand.nextDouble() - 0.5;
 			double f3 = rand.nextDouble() - 0.5;

@@ -2,8 +2,8 @@ package brazillianforgers.dynamiccraft.renders;
 
 import org.lwjgl.opengl.GL11;
 
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;

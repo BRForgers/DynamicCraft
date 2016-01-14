@@ -3,8 +3,8 @@ package brazillianforgers.dynamiccraft.blocks;
 import java.util.Random;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;

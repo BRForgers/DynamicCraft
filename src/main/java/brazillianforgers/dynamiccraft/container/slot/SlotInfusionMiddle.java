@@ -1,7 +1,7 @@
 package brazillianforgers.dynamiccraft.container.slot;
 
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

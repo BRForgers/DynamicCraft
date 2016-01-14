@@ -9,8 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
-import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.gui.GuiInfusionAltar;
 import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
@@ -40,11 +40,11 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
 	
 	public class SmeltingPair extends CachedRecipe
     {
-        public SmeltingPair(List<Item> ingred, ItemStack result) {
+        public SmeltingPair(List<ItemStack> ingred, ItemStack result) {
             
-            this.ingred1 = new PositionedStack(new ItemStack(ingred.get(0)), 48, 5);
-            this.ingred2 = new PositionedStack(new ItemStack(ingred.get(1)), 84, -5);
-            this.ingred3 = new PositionedStack(new ItemStack(ingred.get(2)), 120, 5);
+            this.ingred1 = new PositionedStack(ingred.get(0), 48, 5);
+            this.ingred2 = new PositionedStack(ingred.get(1), 84, -5);
+            this.ingred3 = new PositionedStack(ingred.get(2), 120, 5);
             
             this.result = new PositionedStack(result, 84, 46);
         }
@@ -102,19 +102,19 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
 
     public void loadCraftingRecipes(String outputId, Object... results) {
         if (outputId.equals("infusion") && getClass() == InfusionAltarHandler.class) {//don't want subclasses getting a hold of this
-            Map<ItemStack, List<Item>> recipes = (Map<ItemStack, List<Item>>) InfusionAltarManager.getRecipeList();
-            for (Entry<ItemStack, List<Item>> recipe : recipes.entrySet())
-                arecipes.add(new SmeltingPair(recipe.getValue(), recipe.getKey()));
+            Map<List<ItemStack>, ItemStack> recipes = (Map<List<ItemStack>, ItemStack>) InfusionAltarManager.getRecipeList();
+            for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
+                arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
             	
         } else
             super.loadCraftingRecipes(outputId, results);
     }
 
     public void loadCraftingRecipes(ItemStack result) {
-        Map<ItemStack, List<Item>> recipes = (Map<ItemStack, List<Item>>) InfusionAltarManager.getRecipeList();
-        for (Entry<ItemStack, List<Item>> recipe : recipes.entrySet())
-            if (NEIServerUtils.areStacksSameType(recipe.getKey(), result))
-            	arecipes.add(new SmeltingPair(recipe.getValue(), recipe.getKey()));
+        Map<List<ItemStack>, ItemStack> recipes = (Map<List<ItemStack>, ItemStack>) InfusionAltarManager.getRecipeList();
+        for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
+            if (NEIServerUtils.areStacksSameType(recipe.getValue(), result))
+            	arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
         	
     }
 
@@ -126,10 +126,10 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
     }
 
     public void loadUsageRecipes(ItemStack ingredient) {
-        Map<ItemStack, List<Item>> recipes = (Map<ItemStack, List<Item>>) InfusionAltarManager.getRecipeList();
-        for (Entry<ItemStack, List<Item>> recipe : recipes.entrySet())
-            if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey(), ingredient)) {
-                SmeltingPair arecipe = new SmeltingPair(recipe.getValue(), recipe.getKey());
+        Map<List<ItemStack>, ItemStack> recipes = (Map<List<ItemStack>, ItemStack>) InfusionAltarManager.getRecipeList();
+        for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
+            if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getValue(), ingredient)) {
+                SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 
                 List l = new ArrayList();
             	l.add(arecipe.ingred1);

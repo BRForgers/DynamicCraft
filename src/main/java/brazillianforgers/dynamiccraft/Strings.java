@@ -1,4 +1,4 @@
-package brazillianforgers.dynamiccraft.lib;
+package brazillianforgers.dynamiccraft;
 
 public class Strings {
     

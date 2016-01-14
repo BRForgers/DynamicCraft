@@ -1,14 +1,19 @@
 package brazillianforgers.dynamiccraft.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.lwjgl.opengl.GL11;
 
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.container.ContainerInfusionAltar;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiInfusionAltar extends GuiContainer{
@@ -22,6 +27,29 @@ public class GuiInfusionAltar extends GuiContainer{
 		this.altar = entity;
 		this.xSize = 176;
 		this.ySize = 165;
+	}
+	
+	float mouseX;
+	float mouseY;
+	
+	@Override
+	public void drawScreen(int par1, int par2, float par3) {
+        this.mouseX = (float)par1;
+        this.mouseY = (float)par2;
+        super.drawScreen(par1, par2, par3);
+    }
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+		int k = (this.width - this.xSize) / 2; //X asis on GUI
+		int l = (this.height - this.ySize) / 2; //Y asis on GUI
+		if (this.mouseX > guiLeft + 11 && mouseX < guiLeft + 11 + 10) {//Basically checking if mouse is in the correct area
+			if (mouseY > guiTop + 10 && mouseY < guiTop + 10 + 48){
+				List list = new ArrayList();
+				list.add(EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Magic: " + altar.magic + "/" + altar.maxMagic);
+				this.drawHoveringText(list, (int)mouseX - k, (int)mouseY - l, Minecraft.getMinecraft().fontRenderer);
+			}
+		}
 	}
 
 	@Override

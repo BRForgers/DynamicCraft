@@ -1,7 +1,7 @@
 package brazillianforgers.dynamiccraft.renders;
 
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.models.ModelFireBall;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;

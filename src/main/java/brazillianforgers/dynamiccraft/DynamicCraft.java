@@ -2,7 +2,6 @@ package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.*;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import brazillianforgers.lib.RecipeHelper.RecipeHandler;
 import cpw.mods.fml.common.FMLCommonHandler;

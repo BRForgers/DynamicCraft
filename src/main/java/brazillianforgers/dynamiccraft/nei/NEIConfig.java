@@ -1,7 +1,7 @@
 package brazillianforgers.dynamiccraft.nei;
 
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.gui.GuiInfusionAltar;
-import brazillianforgers.dynamiccraft.lib.Strings;
 import net.minecraft.item.ItemStack;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;

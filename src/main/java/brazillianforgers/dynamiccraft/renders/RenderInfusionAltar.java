@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft.renders;
 
 import org.lwjgl.opengl.GL11;
 
-import brazillianforgers.dynamiccraft.lib.Strings;
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.models.ModelInfusionAltar;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.block.Block;

@@ -1,6 +1,6 @@
 package brazillianforgers.dynamiccraft.renders;
 
-import brazillianforgers.dynamiccraft.lib.Strings;
+import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.models.ModelFireWand;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
@@ -57,18 +57,24 @@ public class RenderFireWand implements IItemRenderer{
                    
                 GL11.glPopMatrix();
                 
+            case INVENTORY:
+            	GL11.glPushMatrix();
+            	float scale = 1.4F;
+            	GL11.glScalef(scale, scale, scale);
+            	GL11.glRotatef(90, -1, 0, 0);
+            	GL11.glRotatef(85, 0, 0, 1);
+            	GL11.glRotatef(180, 0, 1, 0);
+            	GL11.glRotatef(135, 1, 0, 0);
+            	GL11.glTranslatef( -0.1F, 0, 0.5F);
+            	Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+            	GL11.glPopMatrix();
             default:
-            	 if(type == IItemRenderer.ItemRenderType.ENTITY)
-         			GL11.glTranslatef(-0.5F, 0.0F, -0.5F);
-
-
-                 this.wand.render(null, 0, 0, 0, 0, 0, 0.0625F);
             	break;
         }
     }
 
     @Override
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-        return true;
+       return true;
     }
 }
