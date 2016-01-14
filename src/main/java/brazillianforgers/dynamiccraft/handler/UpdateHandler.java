@@ -18,7 +18,7 @@ public class UpdateHandler {
 			newestVersion = IOHelper.getStringFromURL(new URL("https://raw.githubusercontent.com/TheBrazillianForgersTeam/DynamicCraft/master/updatedVersion.txt"));
 		}catch (IOException e) {
 			e.printStackTrace();
-			DynamicCraft.log.error("Could not connect to Registry Update!");
+			DynamicCraft.logger.error("Could not connect to Registry Update!");
 		}
 	}
 	
@@ -28,14 +28,14 @@ public class UpdateHandler {
 		if(newestVersion != null) {
 			if(newestVersion.equalsIgnoreCase(currentVersion)) {
 				updateStatus = "[Dynamic Craft] Ohh nice! The mod is updated!";
-		        DynamicCraft.log.info("Dynamic Craft is updated!");
+		        DynamicCraft.logger.info("Dynamic Craft is updated!");
 			} else {
 				updateStatus = "[Dynamic Craft] Oh... The mod is outdated! You are running version " + currentVersion + " and the latest available version is " + newestVersion;
-		        DynamicCraft.log.info("Dynamic Craft is outdated! You are running version: " + currentVersion + " and the latest available version is: " + newestVersion);
+		        DynamicCraft.logger.info("Dynamic Craft is outdated! You are running version: " + currentVersion + " and the latest available version is: " + newestVersion);
 			}
 		}else {
 			updateStatus = "[DynamicCraft] Failed to connect to check if update is available!";
-		    DynamicCraft.log.info("Failed to connect to check if update is available!");
+		    DynamicCraft.logger.info("Failed to connect to check if update is available!");
 		}
 	}
 }

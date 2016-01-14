@@ -10,12 +10,12 @@ import brazillianforgers.lib.RecipeHelper.RecipeValue;
 
 public class CraftingHandler{
 	
-	public CraftingHandler() {
+	public static void Init() {
 		registerRecipe();
 		registerShapeless();
 	}
 	
-	private void registerRecipe() {
+	private static void registerRecipe() {
 		addRecipe(new ItemStack(BlockHandler.infusionAltar), new Object[] {
 			"B B",
 			"QPQ",
@@ -24,11 +24,11 @@ public class CraftingHandler{
 		});
 	}
 	
-	private void registerShapeless() {
+	private static void registerShapeless() {
 		
 	}
 	
-	private void addRecipe(ItemStack result, Object[] recipe) {
+	private static void addRecipe(ItemStack result, Object[] recipe) {
 		GameRegistry.addRecipe(result, recipe);
 	}
 

@@ -27,58 +27,39 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
 public class DynamicCraft {
+	public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
+		public Item getTabIconItem() {
+	            return ItemHandler.dynamicPearl;
+		}
+    };
 	
 	public static final int guiIdInfusion = 8;
     
-    public static Logger log;
+    public static Logger logger;
     
     @Mod.Instance(Strings.MODID)
     public static DynamicCraft mod;
     
     @SidedProxy(clientSide = Strings.CLIENT, serverSide = Strings.COMMON)
-    public static Common proxy;
+    public static CommonProxy proxy;
         
     @Mod.EventHandler
-    public static void preLoad(FMLPreInitializationEvent e) {
-        log = e.getModLog();
-        log.info("Start Loading...");
+    public static void preInit(FMLPreInitializationEvent e) {
+        logger = e.getModLog();
+        logger.info("Start Loading...");
         
-        ItemHandler.init();
-        BlockHandler.init();
-        
-        Common.registerEntities();
-        Common.registerNetworkStuff();
-        
-        if(e.getSide() == Side.CLIENT) {
-        	Client.init();
-        }
-        
-        log.info("All Pre-Init modules enabled!");
+        proxy.preInit();
     }
 	
     @Mod.EventHandler
-    public static void load(FMLInitializationEvent e) {
-    	FMLCommonHandler.instance().bus().register(new HandlerClient());
-    	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
-    	
-    	new CraftingHandler();
-    	InfusionAltarManager.Init();
+    public static void init(FMLInitializationEvent e) {
+    	proxy.init();
     }
 	
     @Mod.EventHandler 
-    public static void postLoad(FMLPostInitializationEvent e) {
-
-    	GameRegistry.registerWorldGenerator(new WorldGenerator(), 1);
-    	
-    	APIHandler.Load();
+    public static void postInit(FMLPostInitializationEvent e) {
+    	proxy.postInit();
     	
     	UpdateHandler.init();
-    }
-    
-    public static CreativeTabs dynamicTab = new CreativeTabs("dynamicTab") {
-		public Item getTabIconItem() {
-	            return ItemHandler.dynamicPearl;
-		}
-    };
-    
+    }    
 }

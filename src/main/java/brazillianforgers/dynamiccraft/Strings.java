@@ -7,7 +7,7 @@ public class Strings {
     public static final String MODNAME = "Dynamic Craft";
     public static final String DEENDENCIES = "required-after:BRForgersCore@[1.1,]";
     
-    public static final String CLIENT = "brazillianforgers.dynamiccraft.Client";
-    public static final String COMMON = "brazillianforgers.dynamiccraft.Common";
+    public static final String CLIENT = "brazillianforgers.dynamiccraft.ClientProxy";
+    public static final String COMMON = "brazillianforgers.dynamiccraft.CommonProxy";
     
 }
