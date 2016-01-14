@@ -158,8 +158,7 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
             if (!efuels.contains(item.getItem())) {
                 int burnTime = TileEntityInfusionAltar.getItemPower(item);
                 if (burnTime > 0)
-                    afuels.add(new FuelPair(new ItemStack(ItemHandler.dynamicPearl), burnTime));
-                	afuels.add(new FuelPair(new ItemStack(ItemHandler.dynamicShard), burnTime));
+                	afuels.add(new FuelPair(item, burnTime));
             }
     }
 

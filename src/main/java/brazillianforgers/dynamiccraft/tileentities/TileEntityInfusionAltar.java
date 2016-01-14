@@ -19,7 +19,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	private ItemStack[] slots = new ItemStack[5];
 	
 	public int processSpeed = 400;
-	public int magic;
+	public int magic = 0;
 	public int maxMagic = 800;
 	
 	public int processTime;
