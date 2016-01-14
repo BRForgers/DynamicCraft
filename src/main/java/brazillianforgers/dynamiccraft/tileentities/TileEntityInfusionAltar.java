@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft.tileentities;
 
 import brazillianforgers.dynamiccraft.api.DynamicCraftAPI;
 import brazillianforgers.dynamiccraft.api.infusion.InfusionAltarFuel;
-import brazillianforgers.dynamiccraft.handler.InfusionRecipes;
+import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -227,7 +227,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 		if (this.slots[1] == null || slots[2] == null || slots[3] == null) {
 			return false;
 		} else {
-			ItemStack itemstack = InfusionRecipes.smelting().getResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
+			ItemStack itemstack = InfusionAltarManager.getResult(this.slots[1], this.slots[2], this.slots[3]);
 			
 			if (itemstack == null) return false;
 			if (this.slots[4] == null) return true;
@@ -239,7 +239,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     
 	public void smeltItem(){
     	if (this.canSmelt()) {
-			ItemStack itemstack = InfusionRecipes.smelting().getResult(this.slots[1].getItem(), this.slots[2].getItem(), this.slots[3].getItem());
+			ItemStack itemstack = InfusionAltarManager.getResult(this.slots[1], this.slots[2], this.slots[3]);
 
 			if (this.slots[4] == null) {
 				this.slots[4] = itemstack.copy();
