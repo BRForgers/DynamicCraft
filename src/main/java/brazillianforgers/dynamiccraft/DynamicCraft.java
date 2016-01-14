@@ -62,10 +62,12 @@ public class DynamicCraft {
     	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
     	
     	new CraftingHandler();
+    	InfusionAltarManager.Init();
     }
 	
     @Mod.EventHandler 
     public static void postLoad(FMLPostInitializationEvent e) {
+
     	GameRegistry.registerWorldGenerator(new WorldGenerator(), 1);
     	
     	APIHandler.Load();
