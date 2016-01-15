@@ -1,20 +1,16 @@
 package brazillianforgers.dynamiccraft;
 
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
-import brazillianforgers.dynamiccraft.entities.EntityFireBall;
-import brazillianforgers.dynamiccraft.entities.EntityHandler;
-import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
-import brazillianforgers.dynamiccraft.handler.APIHandler;
-import brazillianforgers.dynamiccraft.handler.BlockHandler;
-import brazillianforgers.dynamiccraft.handler.CraftingHandler;
-import brazillianforgers.dynamiccraft.handler.GuiHandler;
-import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
-import brazillianforgers.dynamiccraft.handler.ItemHandler;
+import brazillianforgers.dynamiccraft.entities.*;
+import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
+import brazillianforgers.lib.DungeonManager;
+import static brazillianforgers.lib.DungeonManager.DungeonChests;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -29,6 +25,7 @@ public class CommonProxy {
         registerNetworkStuff();
         registerRender();
 		registerRenderHandler();
+		registerDungeonLoots();
     }
     
     public void init() {
@@ -52,7 +49,7 @@ public class CommonProxy {
     public void registerEntities() {
         EntityRegistry.registerModEntity(EntityFireBall.class, "Fire Ball", 1, DynamicCraft.mod, 64, 10, true);
         
-        EntityHandler.registerMobs(EntityFireWizard.class, "Fire Wizard");
+        EntityHandler.registerMobs(EntityFireWizard.class, "fireWizard");
         EntityRegistry.addSpawn(EntityFireWizard.class, 30, 0, 1, EnumCreatureType.monster, BiomeGenBase.hell);
         
         //Tile
@@ -61,6 +58,12 @@ public class CommonProxy {
     
     public void registerNetworkStuff() {
     	NetworkRegistry.INSTANCE.registerGuiHandler(DynamicCraft.mod, new GuiHandler());
+    }
+    
+    public void registerDungeonLoots() {
+    	DungeonManager.addChestLoot(new DungeonChests[] {
+    			DungeonChests.VILLAGE_BLACKSMITH, DungeonChests.DUNGEON_CHEST, DungeonChests.MINESHAFT_CORRIDOR
+    	}, new ItemStack(ItemHandler.baseRune), 1, 1, 30);
     }
     
 }

@@ -10,9 +10,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-//@Mod(modid = "APITester")
+@Mod(modid = "APITester")
 public class TestMod {
-	//@EventHandler
+	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event)
 	{
 		DynamicCraftAPI.infusionAltarFuel.add(

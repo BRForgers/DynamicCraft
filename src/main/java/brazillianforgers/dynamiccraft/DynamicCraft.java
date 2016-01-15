@@ -22,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * DynamicCraft Mod
- * @author BrazillianForgers Team - By: rennancge (Whyssky_BR)
+ * @author BrazillianForgers Team - By: Whyssky
  */
 
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
@@ -54,6 +54,7 @@ public class DynamicCraft {
     @Mod.EventHandler
     public static void init(FMLInitializationEvent e) {
     	proxy.init();
+    	//MinecraftForge.EVENT_BUS.register(new HandlerClient());
     }
 	
     @Mod.EventHandler 

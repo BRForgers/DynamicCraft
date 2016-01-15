@@ -6,7 +6,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
 import brazillianforgers.dynamiccraft.DynamicCraft;
 
 public class ItemRune extends BaseItem {
@@ -74,6 +81,19 @@ public class ItemRune extends BaseItem {
 				return;
 			
 			p.addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(), 25, 1));
+		}
+	}
+	
+	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
+		String pressShift = EnumChatFormatting.DARK_GRAY + "<Press Shift>";
+		String msg = EnumChatFormatting.GRAY + StatCollector.translateToLocal(getUnlocalizedNameInefficiently(itemStack) + ".description").trim();
+		
+		if(!Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+			list.add(pressShift);
+		}
+		
+		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+			list.add(msg);
 		}
 	}
 }

@@ -22,6 +22,12 @@ public class CraftingHandler{
 			"PEP", 'B', new ItemStack(Blocks.iron_bars), 'E', new ItemStack(Blocks.enchanting_table), 'P', new ItemStack(ItemHandler.dynamicPearl),
 					'Q', new ItemStack(Items.quartz)
 		});
+		
+		addRecipe(new ItemStack(ItemHandler.dynamicPearl), new Object[] {
+				"SRS",
+				"RSR",
+				"SRS", 'S', new ItemStack(ItemHandler.dynamicShard), 'R', new ItemStack(Items.redstone)
+		});
 	}
 	
 	private static void registerShapeless() {

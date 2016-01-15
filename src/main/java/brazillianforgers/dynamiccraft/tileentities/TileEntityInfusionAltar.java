@@ -13,6 +13,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityInfusionAltar extends TileEntity implements ISidedInventory{
@@ -78,7 +79,21 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	{
     	super.readFromNBT(par1NBTTagCompound);
     	this.magic = par1NBTTagCompound.getShort("power");
-    	this.processTime = par1NBTTagCompound.getShort("cookTime");
+    	this.processTime = par1NBTTagCompound.getShort("processTime");
+    	
+    	NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", processTime);
+    	this.slots = new ItemStack[this.getSizeInventory()];
+
+    	for (int i = 0; i < nbttaglist.tagCount(); ++i)
+    	{
+    			NBTTagCompound tagCompound1 = nbttaglist.getCompoundTagAt(i);
+        		byte b0 = tagCompound1.getByte("Slot");
+
+        		if (b0 >= 0 && b0 < this.slots.length)
+        		{
+            		this.slots[b0] = ItemStack.loadItemStackFromNBT(tagCompound1);
+        		}
+    	}
 	}
 
 	/**
@@ -88,7 +103,22 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 	{
     	super.writeToNBT(par1NBTTagCompound);
     	par1NBTTagCompound.setShort("power", (short)this.magic);
-    	par1NBTTagCompound.setShort("CookTime", (short)this.processTime);
+    	par1NBTTagCompound.setShort("processTime", (short)this.processTime);
+    	
+    	NBTTagList nbttaglist = new NBTTagList();
+
+    	for (int i = 0; i < this.slots.length; ++i)
+    	{	
+        		if (this.slots[i] != null)
+        		{
+            		NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+            		nbttagcompound1.setByte("Slot", (byte)i);
+            		this.slots[i].writeToNBT(nbttagcompound1);
+            		nbttaglist.appendTag(nbttagcompound1);
+        		}
+    	}
+
+    	par1NBTTagCompound.setTag("Items", nbttaglist);
 	}
 
     @Override

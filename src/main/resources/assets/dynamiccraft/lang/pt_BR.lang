@@ -11,5 +11,11 @@ item.dynamicShard.name=Pedaço de Pérola Dynamic
 tile.oreDynamic.name=Minério Dinâmico
 tile.blockInfusionAltar.name=Altar de infusão
 
+entity.fireWizard.name=Feiticeiro do Fogo
+
 item.dynamicShard.description.magic=Mágica
 item.dynamicPearl.description.magic=Mágica
+item.baseRune.description=Base para fazer uma Runa.
+item.fireRune.description=Lhe dará imunidade ao fogo. <Deve estar na sua mão>
+item.aquaRune.description=Você poderá respirar debaixo d'água. <Deve estar na sua mão>
+item.earthRune.description=Um pouco de velocidade. <Deve estar na sua mão>
