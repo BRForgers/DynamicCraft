@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderFireWizard extends RenderBiped {
 	
-    private static final ResourceLocation mobTextures = new ResourceLocation(Strings.MODID + ":textures/model/ModelWizard.png");
+    private static final ResourceLocation mobTextures = new ResourceLocation(Strings.MODID + ":textures/entity/FireWizard.png");
     
     public RenderFireWizard(ModelBiped par1ModelBase, float par2) {
         super(par1ModelBase, par2);
