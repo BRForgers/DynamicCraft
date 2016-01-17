@@ -1,0 +1,21 @@
+itemGroup.dynamicTab=Dynamic Craft
+
+item.fireWand.name=Varita del Fuego
+item.baseRune.name=Runa de Base
+item.fireRune.name=Runa del Fuego
+item.aquaRune.name=Runa del Agua
+item.earthRune.name=Runa de la Tierra
+item.dynamicPearl.name=Perla Dynamic
+item.dynamicShard.name=Esquirla de la Perla Dynamic
+
+tile.oreDynamic.name=Mineral Dynamic
+tile.blockInfusionAltar.name=Altar de Infusión
+
+entity.fireWizard.name=Hechicero del Fuego
+
+item.dynamicShard.description.magic=Magia
+item.dynamicPearl.description.magic=Magia
+item.baseRune.description=Base para hacer una runa.
+item.fireRune.description=Da inmunidad contra incendios. <Debe estar en mano>
+item.aquaRune.description=Da respiración bajo el agua. <Debe estar en mano>
+item.earthRune.description=Da velocidad. <Debe estar en mano>
