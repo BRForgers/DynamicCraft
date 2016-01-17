@@ -1,21 +1,21 @@
 itemGroup.dynamicTab=Dynamic Craft
 
-item.fireWand.name=Cajado de fogo
-item.baseRune.name=Base de runa
-item.fireRune.name=Runa de fogo
-item.aquaRune.name=Runa de água
-item.earthRune.name=Runa da terra
+item.fireWand.name=Cajado de Fogo
+item.baseRune.name=Base de Runa
+item.fireRune.name=Runa do Fogo
+item.aquaRune.name=Runa da Água
+item.earthRune.name=Runa da Terra
 item.dynamicPearl.name=Pérola Dynamic
 item.dynamicShard.name=Pedaço de Pérola Dynamic
 
 tile.oreDynamic.name=Minério Dinâmico
-tile.blockInfusionAltar.name=Altar de infusão
+tile.blockInfusionAltar.name=Altar de Infusão
 
 entity.fireWizard.name=Feiticeiro do Fogo
 
 item.dynamicShard.description.magic=Mágica
 item.dynamicPearl.description.magic=Mágica
 item.baseRune.description=Base para fazer uma Runa.
-item.fireRune.description=Lhe dará imunidade ao fogo. <Deve estar na sua mão>
-item.aquaRune.description=Você poderá respirar debaixo d'água. <Deve estar na sua mão>
-item.earthRune.description=Um pouco de velocidade. <Deve estar na sua mão>
+item.fireRune.description=Dá imunidade ao fogo. <Deve estar na mão>
+item.aquaRune.description=Dá respirar debaixo d'água. <Deve estar na mão>
+item.earthRune.description=Um pouco de velocidade. <Deve estar na mão>
