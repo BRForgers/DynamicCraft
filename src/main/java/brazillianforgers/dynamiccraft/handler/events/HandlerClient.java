@@ -19,9 +19,9 @@ import cpw.mods.fml.common.gameevent.PlayerEvent;
 
 public class HandlerClient {
 	
-	@SubscribeEvent
-	public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e) {
-		e.player.addChatMessage(new ChatComponentText(UpdateHandler.updateStatus));
-	}
+	//@SubscribeEvent
+	//public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e) {
+	//	e.player.addChatMessage(new ChatComponentText(UpdateHandler.updateStatus));
+	//}
 	
 }

@@ -1,5 +1,6 @@
 package brazillianforgers.dynamiccraft;
 
+import brazillianforgers.core.UpdateChecker;
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.*;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
@@ -49,6 +50,8 @@ public class DynamicCraft {
         logger.info("Start Loading...");
         
         proxy.preInit();
+        
+        UpdateChecker.addToUpdateChecker(Strings.MODID, Strings.MODNAME, Strings.UPDATEURL, Strings.VERSION, logger);
     }
 	
     @Mod.EventHandler
@@ -61,6 +64,6 @@ public class DynamicCraft {
     public static void postInit(FMLPostInitializationEvent e) {
     	proxy.postInit();
     	
-    	UpdateHandler.init();
+    	//UpdateHandler.init();
     }    
 }
