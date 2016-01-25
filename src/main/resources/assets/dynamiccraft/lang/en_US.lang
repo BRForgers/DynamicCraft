@@ -8,7 +8,7 @@ item.earthRune.name=Earth Rune
 item.dynamicPearl.name=Dynamic Pearl
 item.dynamicShard.name=Dynamic Pearl Shard
 
-tile.oreDynamic.name=Dynamic ore
+tile.oreDynamic.name=Dynamic Ore
 tile.blockInfusionAltar.name=Infusion Altar
 
 entity.fireWizard.name=Fire Wizard
@@ -16,6 +16,6 @@ entity.fireWizard.name=Fire Wizard
 item.dynamicShard.description.magic=Magic
 item.dynamicPearl.description.magic=Magic
 item.baseRune.description=Base to make a rune.
-item.fireRune.description=It'll give you immunity to fire. <It must be on your hand>
-item.aquaRune.description=You'll can breathe underwater. <It must be on your hand>
-item.earthRune.description=You'll get speed. <It must be in your hand>
+item.fireRune.description=Gives fire immunity. <Must be on hand>
+item.aquaRune.description=Gives underwater breathing. <Must be on hand>
+item.earthRune.description=Gives speed. <Must be on hand>
