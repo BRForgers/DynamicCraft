@@ -1,20 +1,38 @@
 package brazillianforgers.dynamiccraft.items;
 
+import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.dynamiccraft.Strings;
+import brazillianforgers.dynamiccraft.api.magic.ItemMagic;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.lib.ItemNBTHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
-public class ItemFireWand extends BaseItem{
+public class ItemFireWand extends ItemMagic{
     
     public ItemFireWand() {
+    	super(100, 50);
+    	
         setCreativeTab(DynamicCraft.dynamicTab);
-        setMaxStackSize(1);
 		setHasSubtypes(true);
-		setMaxDamage(10);
+		setMaxDamage(100);
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister iconRegister) {
+        itemIcon = iconRegister.registerIcon(Strings.MODID + ":" + getUnlocalizedName().substring(5));
     }
     
     public int getTimer(ItemStack item) {
@@ -27,6 +45,15 @@ public class ItemFireWand extends BaseItem{
             ItemNBTHelper.setBoolean(item, "canAttack", false);
             item.damageItem(1, player);
             
+            extractMagic(item, 10);
+            
+            if(getMagic(item) <= 0) {
+            	int sort = itemRand.nextInt(10) + 1;
+            	if(sort == 1) {
+            		item.damageItem(101, player);
+            	}
+            }
+            
             if(!world.isRemote) {
                 world.spawnEntityInWorld(new EntityFireBall(player.worldObj, player));
             }
@@ -38,20 +65,26 @@ public class ItemFireWand extends BaseItem{
     
     @Override
     public void onUpdate(ItemStack item, World world, Entity ent, int i, boolean b) {
-        
+    	setDamage(item, getMaxMagic(item) - getMagic(item));
+    	
         if(ItemNBTHelper.detectNBT(item)) {
             if(!(getTimer(item) >= 40)) {
                 ItemNBTHelper.setInt(item, "timer", getTimer(item) + 1);
 
-                if(getTimer(item) >= 40) {
+                if(getTimer(item) >= 40 && getMagic(item) >= 10) {
                     ItemNBTHelper.setBoolean(item, "canAttack", true);
                 }
             }
         }else {
             ItemNBTHelper.initNBT(item);
             ItemNBTHelper.setInt(item, "timer", 0);
-            ItemNBTHelper.setBoolean(item, "canAttack", true);
+            ItemNBTHelper.setBoolean(item, "canAttack", false);
         }
     }
+    
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
+		String cshift = EnumChatFormatting.DARK_PURPLE.toString() + getMagic(itemStack) + " Magic";
+		list.add(cshift);
+	}
     
 }

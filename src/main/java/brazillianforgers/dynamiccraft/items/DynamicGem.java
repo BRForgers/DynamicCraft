@@ -9,9 +9,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.dynamiccraft.api.magic.IMagic;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 
-public class DynamicGem extends BaseItem{
+public class DynamicGem extends BaseItem implements IMagic{
 
 	private GemType type;
 	
@@ -38,8 +39,8 @@ public class DynamicGem extends BaseItem{
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
 		String cshift = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString()
 				+ StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(itemStack) + ".description.magic").trim()
-				+ ": " + TileEntityInfusionAltar.getItemPower(itemStack);
-		String cshift2 = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Stack: " + TileEntityInfusionAltar.getItemPower(itemStack) * itemStack.stackSize;
+				+ ": " + getMagic();
+		String cshift2 = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Stack: " + getMagic() * itemStack.stackSize;
 		
 		String sshift = EnumChatFormatting.DARK_PURPLE +  "<Press Shift>";
 		
@@ -52,6 +53,18 @@ public class DynamicGem extends BaseItem{
 			
 			if(itemStack.stackSize > 1)
 				list.add(cshift2);
+		}
+	}
+
+	@Override
+	public int getMagic() {
+		switch(type) {
+			case PEARL:
+				return 50;
+			case SHARD: 
+				return 10;
+			default:
+				return 0;
 		}
 	}
 	

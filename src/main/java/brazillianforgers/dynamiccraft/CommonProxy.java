@@ -50,7 +50,7 @@ public class CommonProxy {
         EntityRegistry.registerModEntity(EntityFireBall.class, "Fire Ball", 1, DynamicCraft.mod, 64, 10, true);
         
         EntityHandler.registerMobs(EntityFireWizard.class, "fireWizard");
-        EntityRegistry.addSpawn(EntityFireWizard.class, 30, 0, 1, EnumCreatureType.monster, BiomeGenBase.hell);
+        EntityRegistry.addSpawn(EntityFireWizard.class, 3, 0, 1, EnumCreatureType.monster, BiomeGenBase.hell);
         
         //Tile
         GameRegistry.registerTileEntity(TileEntityInfusionAltar.class, "TileEntityInfusionAltar");

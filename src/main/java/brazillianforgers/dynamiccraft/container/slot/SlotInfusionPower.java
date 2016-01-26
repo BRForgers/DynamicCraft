@@ -18,7 +18,7 @@ public class SlotInfusionPower extends Slot{
 	
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return altar.getItemPower(stack) > 0;
+		return altar.isMagicalItem(stack) > 0;
     }
 	
 	@Override

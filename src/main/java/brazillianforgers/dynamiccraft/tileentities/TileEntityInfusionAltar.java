@@ -4,6 +4,7 @@ import java.util.Random;
 
 import brazillianforgers.dynamiccraft.api.DynamicCraftAPI;
 import brazillianforgers.dynamiccraft.api.infusion.InfusionAltarFuel;
+import brazillianforgers.dynamiccraft.api.magic.IMagic;
 import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -191,13 +192,17 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 
     @Override
     public boolean isItemValidForSlot(int slot, ItemStack stack) {
-        return slot == 4? false : (slot == 0? getItemPower(stack) > 0 : true);
+        return slot == 4? false : (slot == 0? isMagicalItem(stack) > 0 : true);
     }
 
     @Override
     public void updateEntity() {
 	    boolean flag = this.magic > 0;
 		boolean flag1 = false;
+		
+		if(hasMagic() && magic > maxMagic) {
+			magic = maxMagic;
+		}
 	
 		if (hasMagic() && isActive()){
 	    	this.magic-=2;
@@ -225,8 +230,8 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 		}
 	
 		if (!this.worldObj.isRemote){
-	    	if (this.magic < this.maxMagic && this.getItemPower(this.slots[0]) > 0){
-	    		this.magic += getItemPower(this.slots[0]);
+	    	if (isMagicalItem(this.slots[0]) > 0 && this.magic < this.maxMagic){
+	    		this.magic += isMagicalItem(this.slots[0]);
 	
 	    		flag1 = true;
 	    	
@@ -261,16 +266,15 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 		}
     }
     
-    public static int getItemPower(ItemStack par0ItemStack){
+    public static int isMagicalItem(ItemStack par0ItemStack){
     	if (par0ItemStack != null){
     		ItemStack i = par0ItemStack;
         	
-    		if (i.getItem() == ItemHandler.dynamicPearl) return 50;
-    		if (i.getItem() == ItemHandler.dynamicShard) return 10;
-    		
-    		for (InfusionAltarFuel fuel : DynamicCraftAPI.infusionAltarFuel) {
-				if (fuel.fuelItem.isItemEqual(i)) return fuel.fuelAmount;
-			}
+    		if(i.getItem() instanceof IMagic) {
+    			IMagic f = (IMagic) i.getItem();
+    			
+    			return f.getMagic();
+    		}
     		
         	return 0;
     	}

@@ -156,7 +156,7 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
         Set<Item> efuels = excludedFuels();
         for (ItemStack item : ItemList.items)
             if (!efuels.contains(item.getItem())) {
-                int burnTime = TileEntityInfusionAltar.getItemPower(item);
+                int burnTime = TileEntityInfusionAltar.isMagicalItem(item);
                 if (burnTime > 0)
                 	afuels.add(new FuelPair(item, burnTime));
             }

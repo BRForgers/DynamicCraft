@@ -7,8 +7,8 @@
   "mcversion": "${mcversion}",
   "url": "http://brazillianforgers.esy.es/",
   "updateUrl": "",
-  "authorList": ["BrazillianForgers Team", "Whyssky_BR(Rennancge)"],
-  "credits": "Whyssky_BR",
+  "authorList": ["BrazillianForgers Team", "Whyssky_BR"],
+  "credits": "Code: Whyssky_BR, TheFreeHigh / Texture: TheMintBR",
   "logoFile": "",
   "screenshots": [],
   "dependencies": [BRForgersCore]
