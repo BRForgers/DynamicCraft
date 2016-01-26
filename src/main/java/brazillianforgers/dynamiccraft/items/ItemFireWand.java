@@ -49,7 +49,7 @@ public class ItemFireWand extends ItemMagic{
             
             if(getMagic(item) <= 0) {
             	int sort = itemRand.nextInt(10) + 1;
-            	if(sort == 1) {
+            	if(sort >= 1 && sort <= 3 ) {
             		item.damageItem(101, player);
             	}
             }
@@ -64,17 +64,24 @@ public class ItemFireWand extends ItemMagic{
     }
     
     @Override
+    public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int p_77648_4_,
+    		int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+    	
+    	receiveMagic(item, 20);
+    	
+    	return true;
+    }
+    
+    @Override
     public void onUpdate(ItemStack item, World world, Entity ent, int i, boolean b) {
     	setDamage(item, getMaxMagic(item) - getMagic(item));
     	
         if(ItemNBTHelper.detectNBT(item)) {
             if(!(getTimer(item) >= 40)) {
                 ItemNBTHelper.setInt(item, "timer", getTimer(item) + 1);
-
-                if(getTimer(item) >= 40 && getMagic(item) >= 10) {
-                    ItemNBTHelper.setBoolean(item, "canAttack", true);
-                }
             }
+            else if(getTimer(item) >= 40 && getMagic(item) >= 10)
+                ItemNBTHelper.setBoolean(item, "canAttack", true);
         }else {
             ItemNBTHelper.initNBT(item);
             ItemNBTHelper.setInt(item, "timer", 0);

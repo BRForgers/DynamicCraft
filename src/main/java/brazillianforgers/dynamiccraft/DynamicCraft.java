@@ -1,6 +1,7 @@
 package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.core.UpdateChecker;
+import brazillianforgers.dynamiccraft.gui.GuiMagicBar;
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.*;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
@@ -14,6 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLStateEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -64,6 +66,7 @@ public class DynamicCraft {
     public static void postInit(FMLPostInitializationEvent e) {
     	proxy.postInit();
     	
+    	MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
     	//UpdateHandler.init();
     }    
 }
