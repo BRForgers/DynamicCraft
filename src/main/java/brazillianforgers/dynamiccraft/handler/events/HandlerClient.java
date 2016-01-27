@@ -9,8 +9,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
+import brazillianforgers.dynamiccraft.client.KeyBindings;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
-import brazillianforgers.dynamiccraft.handler.KeyBindings;
 import brazillianforgers.dynamiccraft.handler.UpdateHandler;
 import brazillianforgers.dynamiccraft.items.ItemFireWand;
 import brazillianforgers.dynamiccraft.network.MessageModeWand;
@@ -37,24 +37,5 @@ public class HandlerClient {
 	//public void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent e) {
 	//	e.player.addChatMessage(new ChatComponentText(UpdateHandler.updateStatus));
 	//}
-	
-	@SubscribeEvent
-	public void changeModeInput(InputEvent.KeyInputEvent e) {
-		if(KeyBindings.mode.isPressed()) {
-			if(Minecraft.getMinecraft().thePlayer.getHeldItem().getItem() == ItemHandler.fireWand) {
-				ItemStack w =  Minecraft.getMinecraft().thePlayer.getHeldItem();
-				
-				if(ItemNBTHelper.getString(w, "mode", "PROJECTILE").equals("PROJECTILE")) {
-					NetworkHandler.sendToServer(new MessageModeWand("mode", "FIRE"));
-					Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.DARK_GRAY + 
-							"Fire Mode enabled!"));
-				}else if(ItemNBTHelper.getString(w, "mode", "PROJECTILE").equals("FIRE")) {
-					NetworkHandler.sendToServer(new MessageModeWand("mode", "PROJECTILE"));
-					Minecraft.getMinecraft().thePlayer.addChatComponentMessage(new ChatComponentText(EnumChatFormatting.DARK_GRAY + 
-							"Projectile Mode enabled!"));
-				}
-			}
-		}
-	}
 	
 }

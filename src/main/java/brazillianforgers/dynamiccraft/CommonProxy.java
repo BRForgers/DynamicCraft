@@ -4,6 +4,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
+import brazillianforgers.dynamiccraft.client.KeyBindings;
 import brazillianforgers.dynamiccraft.entities.*;
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
@@ -35,7 +36,6 @@ public class CommonProxy {
     	CraftingHandler.Init();
     	InfusionAltarManager.Init();
     	
-    	new KeyBindings();
     	registerEvents();
     }
     
@@ -46,7 +46,6 @@ public class CommonProxy {
 	
     public void registerEvents() {
     	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
-    	FMLCommonHandler.instance().bus().register(new HandlerClient());
     }
     
     public void registerRender() {} //This MUST HAVE NOTHING

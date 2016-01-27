@@ -1,5 +1,6 @@
 package brazillianforgers.dynamiccraft;
 
+import brazillianforgers.dynamiccraft.client.KeyInputHandler;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
 import brazillianforgers.dynamiccraft.handler.BlockHandler;
@@ -39,5 +40,7 @@ public class ClientProxy extends CommonProxy{
     	super.registerEvents();
     	
     	MinecraftForge.EVENT_BUS.register(new HandlerClient());
+    	FMLCommonHandler.instance().bus().register(new HandlerClient());
+    	FMLCommonHandler.instance().bus().register(new KeyInputHandler());
     }
 }
