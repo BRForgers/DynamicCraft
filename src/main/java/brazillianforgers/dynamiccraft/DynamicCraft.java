@@ -4,6 +4,7 @@ import brazillianforgers.core.UpdateChecker;
 import brazillianforgers.dynamiccraft.gui.GuiMagicBar;
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.*;
+import brazillianforgers.dynamiccraft.network.NetworkHandler;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import brazillianforgers.lib.RecipeHelper.RecipeHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -52,6 +53,7 @@ public class DynamicCraft {
         logger.info("Start Loading...");
         
         proxy.preInit();
+        NetworkHandler.init();
         
         UpdateChecker.addToUpdateChecker(Strings.MODID, Strings.MODNAME, Strings.UPDATEURL, Strings.VERSION, logger);
     }
@@ -59,7 +61,6 @@ public class DynamicCraft {
     @Mod.EventHandler
     public static void init(FMLInitializationEvent e) {
     	proxy.init();
-    	//MinecraftForge.EVENT_BUS.register(new HandlerClient());
     }
 	
     @Mod.EventHandler 
@@ -67,6 +68,5 @@ public class DynamicCraft {
     	proxy.postInit();
     	
     	MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
-    	//UpdateHandler.init();
     }    
 }

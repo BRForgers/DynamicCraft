@@ -41,13 +41,36 @@ public class ItemFireWand extends ItemBaseWand{
             	}
             }
             
-            if(!world.isRemote) {
-                world.spawnEntityInWorld(new EntityFireBall(player.worldObj, player));
-            }
+            if(ItemNBTHelper.getString(item, "mode", "PROJECTILE").equals("PROJECTILE"))
+	            if(!world.isRemote) {
+	                world.spawnEntityInWorld(new EntityFireBall(player.worldObj, player));
+	            }
             
             ItemNBTHelper.setInt(item, "timer", 0);
     	}
     	return item;
+    }
+    
+    public void onUpdate(ItemStack item, World world, Entity ent, int i, boolean b) {
+    	super.onUpdate(item, world, ent, i, b); 
+    	
+    	if(ItemNBTHelper.detectNBT(item)) {
+			if(!ItemNBTHelper.verifyExistance(item, "mode")) {
+				ItemNBTHelper.setString(item, "mode", "PROJECTILE");
+			}
+		}else {
+			ItemNBTHelper.initNBT(item);
+			ItemNBTHelper.setString(item, "mode", "PROJECTILE");
+		}
+	 }
+    
+    public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
+		 super.addInformation(itemStack, player, list, par4);
+		 
+		 String nbtmode = ItemNBTHelper.getString(itemStack, "mode", "PROJECTILE");
+		 
+		 String mod = EnumChatFormatting.GRAY + "Mode: " + EnumChatFormatting.AQUA + EnumChatFormatting.BOLD + nbtmode;
+		 list.add(mod);
     }
     
 }

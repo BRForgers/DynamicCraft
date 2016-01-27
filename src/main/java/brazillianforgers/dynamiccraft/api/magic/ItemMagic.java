@@ -1,10 +1,11 @@
 package brazillianforgers.dynamiccraft.api.magic;
 
+import brazillianforgers.dynamiccraft.items.BaseItem;
 import brazillianforgers.lib.ItemNBTHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemMagic extends Item implements IMagicalItem{
+public class ItemMagic extends BaseItem implements IMagicalItem{
 
 	protected int capacity;
 	protected int receive;

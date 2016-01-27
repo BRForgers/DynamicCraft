@@ -6,11 +6,14 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import brazillianforgers.dynamiccraft.entities.*;
 import brazillianforgers.dynamiccraft.handler.*;
+import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
 import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import brazillianforgers.lib.DungeonManager;
 import static brazillianforgers.lib.DungeonManager.DungeonChests;
+
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -31,6 +34,9 @@ public class CommonProxy {
     public void init() {
     	CraftingHandler.Init();
     	InfusionAltarManager.Init();
+    	
+    	new KeyBindings();
+    	registerEvents();
     }
     
     public void postInit() {
@@ -40,6 +46,7 @@ public class CommonProxy {
 	
     public void registerEvents() {
     	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
+    	FMLCommonHandler.instance().bus().register(new HandlerClient());
     }
     
     public void registerRender() {} //This MUST HAVE NOTHING
