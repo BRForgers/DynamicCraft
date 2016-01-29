@@ -2,11 +2,13 @@ package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.client.KeyInputHandler;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
+import brazillianforgers.dynamiccraft.entities.EntityFireMode;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
 import brazillianforgers.dynamiccraft.handler.BlockHandler;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
 import brazillianforgers.dynamiccraft.renders.RenderFireBall;
+import brazillianforgers.dynamiccraft.renders.RenderFireMode;
 import brazillianforgers.dynamiccraft.renders.RenderFireWand;
 import brazillianforgers.dynamiccraft.renders.RenderFireWizard;
 import brazillianforgers.dynamiccraft.renders.RenderInfusionAltar;
@@ -26,6 +28,7 @@ public class ClientProxy extends CommonProxy{
     public void registerRender() {
         RenderingRegistry.registerEntityRenderingHandler(EntityFireBall.class, new RenderFireBall());
         RenderingRegistry.registerEntityRenderingHandler(EntityFireWizard.class, new RenderFireWizard(new ModelBiped(), 0.3F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityFireMode.class, new RenderFireMode());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new RenderInfusionAltar(new TileEntityInfusionAltar()));
         
         MinecraftForgeClient.registerItemRenderer(ItemHandler.fireWand, (IItemRenderer) new RenderFireWand());

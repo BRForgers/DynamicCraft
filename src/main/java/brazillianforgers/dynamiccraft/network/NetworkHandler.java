@@ -13,6 +13,7 @@ public class NetworkHandler {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MODID);
 		
 		INSTANCE.registerMessage(MessageModeWand.class, MessageModeWand.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(MessageSetFire.class, MessageSetFire.class, 1, Side.SERVER);
 	}
 	
 	public static void sendToServer(IMessage message) {

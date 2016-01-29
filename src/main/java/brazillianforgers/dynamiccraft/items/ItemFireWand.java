@@ -8,6 +8,7 @@ import brazillianforgers.dynamiccraft.DynamicCraft;
 import brazillianforgers.dynamiccraft.Strings;
 import brazillianforgers.dynamiccraft.api.magic.ItemMagic;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
+import brazillianforgers.dynamiccraft.entities.EntityFireMode;
 import brazillianforgers.lib.ItemNBTHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 public class ItemFireWand extends ItemBaseWand{
@@ -41,10 +43,32 @@ public class ItemFireWand extends ItemBaseWand{
             	}
             }
             
-            if(ItemNBTHelper.getString(item, "mode", "PROJECTILE").equals("PROJECTILE"))
+            if(ItemNBTHelper.getString(item, "mode", "PROJECTILE").equals("PROJECTILE")) {
 	            if(!world.isRemote) {
 	                world.spawnEntityInWorld(new EntityFireBall(player.worldObj, player));
 	            }
+    		}else if(ItemNBTHelper.getString(item, "mode", "PROJECTILE").equals("FIRE")) {
+    			if(world.isRemote) {
+	    			Vec3 look = player.getLookVec();
+	    			
+	    			double vx = look.xCoord;
+	    			double vy = look.yCoord;
+	    			double vz = look.zCoord;
+	    			
+	    			player.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)player.posX, (int)player.posY, (int)player.posZ, 0);
+	    			
+					EntityFireMode ent = new EntityFireMode(player.worldObj, player, vx, vy, vz);
+					ent.setPosition(player.posX + vx, player.posY + vy, player.posZ + vz);
+					ent.accelerationX = look.xCoord * 0.1;
+					ent.accelerationY = look.yCoord * 0.1;
+					ent.accelerationZ = look.zCoord * 0.1;
+					
+			        player.worldObj.spawnEntityInWorld(ent);
+			        
+			        player.worldObj.playSoundAtEntity(ent, "random.bow", 1, 1);
+    			}
+    		}
+    	
             
             ItemNBTHelper.setInt(item, "timer", 0);
     	}
