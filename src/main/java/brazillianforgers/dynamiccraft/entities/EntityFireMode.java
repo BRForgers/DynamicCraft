@@ -33,13 +33,13 @@ public class EntityFireMode extends EntityFireball{
 				
     	worldObj.spawnParticle("flame", x + 0.5, y + 0.5, z + 0.5, vx, vy, vz);
     	worldObj.spawnParticle("flame", x - 0.5, y - 0.5, z - 0.5, vx, vy, vz);
-    	worldObj.spawnParticle("flame", x, y + 1, z + 1, vx, vy, vz);
+    	worldObj.spawnParticle("flame", x, y + 1, z, vx, vy, vz);
     	worldObj.spawnParticle("flame", x + f1, y - f1, z + f1, vx, vy, vz);
     	worldObj.spawnParticle("flame", x + f2, y + f2, z - f2, vx, vy, vz);
     	worldObj.spawnParticle("flame", x - f3, y - f1, z - f2, vx, vy, vz);
     	
-    	worldObj.spawnParticle("flame", x + 0.8, y + 0.7, z + 0.7, vx, vy, vz);
-    	worldObj.spawnParticle("flame", x - 0.8, y - 0.7, z - 0.7, vx, vy, vz);
+    	worldObj.spawnParticle("flame", x + 0.8, y + 0.7, z + 0.2, vx, vy, vz);
+    	worldObj.spawnParticle("flame", x - 0.8, y - 0.7, z - 0.4, vx, vy, vz);
     	worldObj.spawnParticle("flame", x + f1 - 0.5, y - f1, z + f1 - 0.5, vx, vy, vz);
     	worldObj.spawnParticle("flame", x + f2 + 0.2, y + f2, z + f2, vx, vy, vz);
     	worldObj.spawnParticle("flame", x - 0.4 + f1, y + f3, z + f3, vx, vy, vz);

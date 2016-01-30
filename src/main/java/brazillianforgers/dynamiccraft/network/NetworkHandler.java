@@ -9,9 +9,13 @@ import cpw.mods.fml.relauncher.Side;
 public class NetworkHandler {
 	private static SimpleNetworkWrapper INSTANCE;
 	
-	public static void init() {
+	public static void initServerMessages() {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MODID);
-		
+	}
+	
+	public static void initClientMessages() {
+		if(INSTANCE == null)
+			INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Strings.MODID);
 		INSTANCE.registerMessage(MessageModeWand.class, MessageModeWand.class, 0, Side.SERVER);
 		INSTANCE.registerMessage(MessageSetFire.class, MessageSetFire.class, 1, Side.SERVER);
 	}

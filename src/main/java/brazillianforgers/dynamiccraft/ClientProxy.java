@@ -4,9 +4,11 @@ import brazillianforgers.dynamiccraft.client.KeyInputHandler;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.dynamiccraft.entities.EntityFireMode;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
+import brazillianforgers.dynamiccraft.gui.GuiMagicBar;
 import brazillianforgers.dynamiccraft.handler.BlockHandler;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
+import brazillianforgers.dynamiccraft.network.NetworkHandler;
 import brazillianforgers.dynamiccraft.renders.RenderFireBall;
 import brazillianforgers.dynamiccraft.renders.RenderFireMode;
 import brazillianforgers.dynamiccraft.renders.RenderFireWand;
@@ -17,6 +19,7 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLStateEvent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.IItemRenderer;
@@ -43,7 +46,14 @@ public class ClientProxy extends CommonProxy{
     	super.registerEvents();
     	
     	MinecraftForge.EVENT_BUS.register(new HandlerClient());
+    	MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
     	FMLCommonHandler.instance().bus().register(new HandlerClient());
     	FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+    }
+    
+    public void registerNetworkStuff() {
+    	super.registerNetworkStuff();
+    	
+    	NetworkHandler.initClientMessages();
     }
 }

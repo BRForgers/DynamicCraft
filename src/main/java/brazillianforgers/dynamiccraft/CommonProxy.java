@@ -9,6 +9,7 @@ import brazillianforgers.dynamiccraft.entities.*;
 import brazillianforgers.dynamiccraft.handler.*;
 import brazillianforgers.dynamiccraft.handler.events.HandlerClient;
 import brazillianforgers.dynamiccraft.handler.events.HandlerCommon;
+import brazillianforgers.dynamiccraft.network.NetworkHandler;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import brazillianforgers.dynamiccraft.world.WorldGenerator;
 import brazillianforgers.lib.DungeonManager;
@@ -64,6 +65,7 @@ public class CommonProxy {
     
     public void registerNetworkStuff() {
     	NetworkRegistry.INSTANCE.registerGuiHandler(DynamicCraft.mod, new GuiHandler());
+    	NetworkHandler.initServerMessages();
     }
     
     public void registerDungeonLoots() {

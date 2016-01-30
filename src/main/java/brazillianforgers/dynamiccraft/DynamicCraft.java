@@ -26,7 +26,7 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * DynamicCraft Mod
- * @author BrazillianForgers Team - By: Whyssky
+ * @author BrazilianForgers Team - By: Whyssky
  */
 
 @Mod(modid = Strings.MODID , version = Strings.VERSION , name = Strings.MODNAME, dependencies = Strings.DEENDENCIES)
@@ -53,7 +53,6 @@ public class DynamicCraft {
         logger.info("Start Loading...");
         
         proxy.preInit();
-        NetworkHandler.init();
         
         UpdateChecker.addToUpdateChecker(Strings.MODID, Strings.MODNAME, Strings.UPDATEURL, Strings.VERSION, logger);
     }
@@ -66,7 +65,5 @@ public class DynamicCraft {
     @Mod.EventHandler 
     public static void postInit(FMLPostInitializationEvent e) {
     	proxy.postInit();
-    	
-    	MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
     }    
 }

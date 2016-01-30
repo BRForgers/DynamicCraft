@@ -1,5 +1,6 @@
 package brazillianforgers.dynamiccraft.client;
 
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.network.MessageModeWand;
 import brazillianforgers.dynamiccraft.network.NetworkHandler;
 import brazillianforgers.lib.ItemNBTHelper;
@@ -25,7 +26,11 @@ public class KeyInputHandler {
         if(key != null) {
             switch(key){
                 case MODE:
-                	ItemStack w =  Minecraft.getMinecraft().thePlayer.getHeldItem();
+                	if(Minecraft.getMinecraft().thePlayer.getHeldItem() == null || Minecraft.getMinecraft().thePlayer.
+                		getHeldItem().getItem() != ItemHandler.fireWand)
+                		return;
+                	
+                	ItemStack w = Minecraft.getMinecraft().thePlayer.getHeldItem();
     				
     				if(ItemNBTHelper.getString(w, "mode", "PROJECTILE").equals("PROJECTILE")) {
     					NetworkHandler.sendToServer(new MessageModeWand("mode", "FIRE"));
