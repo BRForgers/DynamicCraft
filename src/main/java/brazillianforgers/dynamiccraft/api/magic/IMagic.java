@@ -1,7 +1,12 @@
 package brazillianforgers.dynamiccraft.api.magic;
 
+import net.minecraft.item.ItemStack;
+
 public interface IMagic {
 	
-	int getMagic();
+	/*
+	 * Gets the amount of magic
+	 */
+	int getMagic(ItemStack stk);
 	
 }

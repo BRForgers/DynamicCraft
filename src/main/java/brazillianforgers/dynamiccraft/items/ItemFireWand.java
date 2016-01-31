@@ -25,8 +25,6 @@ public class ItemFireWand extends ItemBaseWand{
     
     public ItemFireWand() {
     	super(100, 50);
-    	
-        setCreativeTab(DynamicCraft.dynamicTab);
     }
     
     @Override

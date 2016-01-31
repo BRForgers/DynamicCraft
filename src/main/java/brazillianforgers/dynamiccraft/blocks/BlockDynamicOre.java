@@ -13,7 +13,7 @@ import net.minecraft.util.IIcon;
 
 public class BlockDynamicOre extends Block{
 
-	public IIcon [] icons;
+	public IIcon icon;
 	
 	public BlockDynamicOre() {
 		super(Material.rock);
@@ -23,20 +23,17 @@ public class BlockDynamicOre extends Block{
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 2);
 		
-		icons = new IIcon[6];
 	}
 	
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		for (int i = 0; i <=5; i++) {
-			icons[i] = iconRegister.registerIcon(Strings.MODID + ":oreDynamic");
-		}
+		icon = iconRegister.registerIcon(Strings.MODID + ":oreDynamic");
 		
 	}
 	
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return icons[side];
+		return icon;
 	}
 	
 	@Override

@@ -39,8 +39,8 @@ public class DynamicGem extends BaseItem implements IMagic{
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) {
 		String cshift = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString()
 				+ StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(itemStack) + ".description.magic").trim()
-				+ ": " + getMagic();
-		String cshift2 = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Stack: " + getMagic() * itemStack.stackSize;
+				+ ": " + getMagic(itemStack);
+		String cshift2 = EnumChatFormatting.DARK_PURPLE + EnumChatFormatting.BOLD.toString() + "Stack: " + getMagic(itemStack) * itemStack.stackSize;
 		
 		String sshift = EnumChatFormatting.DARK_PURPLE +  "<Press Shift>";
 		
@@ -57,14 +57,14 @@ public class DynamicGem extends BaseItem implements IMagic{
 	}
 
 	@Override
-	public int getMagic() {
+	public int getMagic(ItemStack stk) {
 		switch(type) {
 			case PEARL:
 				return 50;
 			case SHARD: 
 				return 10;
-			default:
-				return 0;
+		default:
+			return 0;
 		}
 	}
 	

@@ -273,7 +273,7 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
     		if(i.getItem() instanceof IMagic) {
     			IMagic f = (IMagic) i.getItem();
     			
-    			return f.getMagic();
+    			return f.getMagic(i);
     		}
     		
         	return 0;

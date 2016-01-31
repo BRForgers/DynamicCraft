@@ -2,16 +2,16 @@ package brazillianforgers.dynamiccraft.api.magic;
 
 import net.minecraft.item.ItemStack;
 
-public interface IMagicalItem {
+public interface IMagicalItem extends IMagic{
 	
 	/*
-	 * Gets the amount of magic currently stored
+	 * Extract magic from storage
 	 */
-	int getMagic(ItemStack stk);
-	
-	
 	int extractMagic(ItemStack stk, int extract);
 	
+	/*
+	 * Add magic to storage
+	 */
 	int receiveMagic(ItemStack stk, int receive);
 	
 	/*
