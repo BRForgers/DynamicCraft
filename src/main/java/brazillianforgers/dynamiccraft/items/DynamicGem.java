@@ -67,5 +67,10 @@ public class DynamicGem extends BaseItem implements IMagic{
 			return 0;
 		}
 	}
+
+	@Override
+	public void setMagic(ItemStack stk, int amount) {
+		return;
+	}
 	
 }

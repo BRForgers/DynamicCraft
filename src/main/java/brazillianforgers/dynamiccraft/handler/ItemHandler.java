@@ -34,7 +34,7 @@ public class ItemHandler {
         dynamicPearl = new DynamicGem(DynamicGem.GemType.PEARL);
         dynamicShard = new DynamicGem(DynamicGem.GemType.SHARD);
         
-        magicFinder = new ItemMagicFinder();
+        magicFinder = new ItemMagicFinder().setUnlocalizedName("magicFinder");
     }
     
     private static void registerItems() {

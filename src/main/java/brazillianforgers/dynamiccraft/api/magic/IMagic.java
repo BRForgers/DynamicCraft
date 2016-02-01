@@ -9,4 +9,6 @@ public interface IMagic {
 	 */
 	int getMagic(ItemStack stk);
 	
+	void setMagic(ItemStack stk, int amount);
+	
 }

@@ -98,4 +98,13 @@ public class ItemMagic extends BaseItem implements IMagicalItem{
 		return capacity;
 	}
 
+	@Override
+	public void setMagic(ItemStack stk, int amount) {
+		if(!ItemNBTHelper.detectNBT(stk)) {
+			ItemNBTHelper.initNBT(stk);
+		}
+		
+		ItemNBTHelper.setInt(stk, "Magic", amount);
+	}
+
 }
