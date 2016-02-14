@@ -24,24 +24,20 @@ public class GuiHandler implements IGuiHandler{
 		if(player.getHeldItem() != null)
 			stack = player.getHeldItem();
 
-		if(entity != null){
-			switch (ID) {
-				case DynamicCraft.guiIdInfusion:
-					if(entity instanceof TileEntityInfusionAltar) {
-						return new ContainerInfusionAltar(player.inventory, (TileEntityInfusionAltar) entity);
-					} 
-					return null;
-				case DynamicCraft.guiIdMagicFinder:
-					if(stack.getItem() instanceof ItemMagicFinder) {
-						return new ContainerMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
-					}
-					return null;
-				default:
-					return null;
-			}
+		switch (ID) {
+			case DynamicCraft.guiIdInfusion:
+				if(entity instanceof TileEntityInfusionAltar) {
+					return new ContainerInfusionAltar(player.inventory, (TileEntityInfusionAltar) entity);
+				} 
+				return null;
+			case DynamicCraft.guiIdMagicFinder:
+				if(stack.getItem() instanceof ItemMagicFinder) {
+					return new ContainerMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
+				}
+				return null;
+			default:
+				return null;
 		}
-		
-		return null;
 	}
 
 	@Override
@@ -51,24 +47,22 @@ public class GuiHandler implements IGuiHandler{
 		ItemStack stack = null;
 		if(player.getHeldItem() != null)
 			stack = player.getHeldItem();
-
-		if(entity != null){
-			switch (ID) {
-				case DynamicCraft.guiIdInfusion:
-					if(entity instanceof TileEntityInfusionAltar) {
-						return new GuiInfusionAltar(player.inventory, (TileEntityInfusionAltar) entity);
-					} 
-					return null;
-				case DynamicCraft.guiIdMagicFinder:
-					if(stack.getItem() instanceof ItemMagicFinder) {
-						return new GuiMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
-					}
-					return null;
-				default:
-					return null;
+		
+		switch (ID) {
+		case DynamicCraft.guiIdInfusion:
+			if(entity instanceof TileEntityInfusionAltar) {
+				return new GuiInfusionAltar(player.inventory, (TileEntityInfusionAltar) entity);
+			} 
+			return null;
+		case DynamicCraft.guiIdMagicFinder:
+			if(stack.getItem() instanceof ItemMagicFinder) {
+				System.out.println("Sim, é instance de MagicFinder");
+				return new GuiMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
 			}
+			return null;
+		default:
+			return null;
 		}
-		return null;
 	}
 
 }

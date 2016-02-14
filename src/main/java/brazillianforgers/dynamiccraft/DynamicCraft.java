@@ -41,7 +41,7 @@ public class DynamicCraft {
      * GUI'S
      */
 	public static final int guiIdInfusion = 8;
-	public static final int guiIdMagicFinder = 9;
+	public static final int guiIdMagicFinder = 0;
     
     public static Logger logger;
     

@@ -123,12 +123,15 @@ public class InventoryMagicFinder implements IInventory{
 
 	@Override
 	public void openInventory() {
-		
+		if (!invItem.hasTagCompound()) {
+			invItem.setTagCompound(new NBTTagCompound());
+		}
+		readFromNBT(invItem.getTagCompound());
 	}
 
 	@Override
 	public void closeInventory() {
-		
+		markDirty();
 	}
 
 	@Override
@@ -136,31 +139,21 @@ public class InventoryMagicFinder implements IInventory{
 		return stack.getItem() instanceof IMagicalItem;
 	}
 	
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
+	public void readFromNBT(NBTTagCompound NBTTagCompound) {
 		ItemMagicFinder mf = (ItemMagicFinder) invItem.getItem();
-		mf.setMagic(invItem, par1NBTTagCompound.getShort("Magic"));
-		
-		NBTTagCompound tagCompound1 = (NBTTagCompound) par1NBTTagCompound.getTag("Items");
-		byte b0 = tagCompound1.getByte("Slot");
-		
-		slot = ItemStack.loadItemStackFromNBT(tagCompound1);
+		mf.setMagic(invItem, NBTTagCompound.getShort("Magic"));
+
+		slot = ItemStack.loadItemStackFromNBT(NBTTagCompound);
 	}
 
 	/**
  	* Writes a tile entity to NBT.
  	*/
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-	{
+	
+	public void writeToNBT(NBTTagCompound NBTTagCompound) {
 		ItemMagicFinder mf = (ItemMagicFinder) invItem.getItem();
-		
-		NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-		if (slot != null)
-		{
-			nbttagcompound1.setByte("Slot", (byte)0);
-			slot.writeToNBT(nbttagcompound1);
+		if (slot != null) {
+			slot.writeToNBT(NBTTagCompound);
 		}
-
-    	par1NBTTagCompound.setTag("Items", nbttagcompound1);
 	}
 }
