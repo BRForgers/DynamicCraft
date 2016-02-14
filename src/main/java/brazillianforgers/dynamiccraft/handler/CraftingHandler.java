@@ -28,13 +28,20 @@ public class CraftingHandler{
 				"RSR",
 				"SRS", 'S', new ItemStack(ItemHandler.dynamicShard), 'R', new ItemStack(Items.redstone)
 		});
+		
+		addRecipe(new ItemStack(BlockHandler.blockDynamic),
+				"DDD",
+				"DDD",
+				"DDD",
+				'D', ItemHandler.dynamicPearl
+		);
 	}
 	
 	private static void registerShapeless() {
-		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.dynamicPearl, 9), BlockHandler.blockDynamic);
 	}
 	
-	private static void addRecipe(ItemStack result, Object[] recipe) {
+	private static void addRecipe(ItemStack result, Object... recipe) {
 		GameRegistry.addRecipe(result, recipe);
 	}
 

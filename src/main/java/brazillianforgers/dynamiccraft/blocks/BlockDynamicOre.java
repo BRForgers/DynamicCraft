@@ -16,7 +16,7 @@ public class BlockDynamicOre extends Block{
 	public IIcon icon;
 	
 	public BlockDynamicOre() {
-		super(Material.rock);
+		super(Material.iron);
 		setHardness(14f);
 		setResistance(5f);
 		setCreativeTab(DynamicCraft.dynamicTab);
