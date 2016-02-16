@@ -19,85 +19,73 @@ public class RenderFireWand implements IItemRenderer{
     }
 
     @Override
-    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-        return true;
-    }
-
-    @Override
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-    	float scale = 1.3F;
-        switch(type){
-           
-            case EQUIPPED:
-                GL11.glPushMatrix();
-                   
-                Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-                
-                GL11.glRotatef(-10, 1F, 0F, 1F);
-                GL11.glRotatef(180, 1F, 0F, 0F);
-                GL11.glRotatef(25, 0F, 1F, 0F);
-                GL11.glScalef(scale, scale, scale);
-                GL11.glTranslatef(0.7F, -1.5F, -0.3F);
-                    
-                this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
-                   
-                GL11.glPopMatrix();
-           
-            case EQUIPPED_FIRST_PERSON:
-                GL11.glPushMatrix();
-                   
-                Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-                
-                GL11.glRotatef(-10, 1F, 0F, 1F);
-                GL11.glRotatef(180, 1F, 0F, 0F);
-                GL11.glRotatef(25, 0F, 1F, 0F);
-                GL11.glScalef(scale, scale, scale);
-                GL11.glTranslatef(0.7F, -1.5F, -0.3F);
-                
-                this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
-                   
-                GL11.glPopMatrix();
-                
-            case ENTITY:
-            	GL11.glPushMatrix();
-                
-                Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-                
-                GL11.glRotatef(-10, 1F, 0F, 1F);
-                GL11.glRotatef(180, 1F, 0F, 0F);
-                GL11.glRotatef(25, 0F, 1F, 0F);
-                GL11.glScalef(scale, scale, scale);
-                GL11.glTranslatef(0.7F, -1.5F, -0.3F);
-                   
-               /* GL11.glRotatef(110, 0F, 1F, 0F);
-                GL11.glRotatef(130, 1F, 0F, 0F);
-                GL11.glRotatef(30, 1F, 0F, 1F);
-                GL11.glTranslatef(-1.2F, -1.5F, -0.6F);
-                GL11.glScalef(1.5F, 1.5F, 1.5F); */
-                
-                this.wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
-                   
-                GL11.glPopMatrix();
-            case INVENTORY:
-            	 GL11.glPushMatrix();
-            	 
-            	 GL11.glRotatef(-10, 1F, 0F, 1F);
-            	 GL11.glRotatef(180, 1F, 0F, 0F);
-            	 GL11.glRotatef(25, 0F, 1F, 0F);
-            	 GL11.glScalef(scale, scale, scale);
-            	 GL11.glTranslatef(0.7F, -1.5F, -0.3F);
-            	 
-            	 Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-            	 wand.render((Entity) null, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
-            	 0.0625F);
-            	 GL11.glPopMatrix();
+        switch(type){    
+        	case EQUIPPED: 
+	            GL11.glPushMatrix();
+	           
+	            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+	           
+	            GL11.glRotatef(25, 0F, 1F, 0F);
+	            GL11.glRotatef(150, 1F, 0F, 0F);
+	            GL11.glRotatef(0, 0F, 0F, 1F);
+	            GL11.glTranslatef(0.2F, -2F, -1F);
+	            GL11.glScalef(1.7F, 1.7F, 1.7F);
+	            
+	            wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
+	           
+	            GL11.glPopMatrix();
+	            break;
+        	case EQUIPPED_FIRST_PERSON:
+	            GL11.glPushMatrix();
+	           
+	            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+	           
+	            GL11.glRotatef(25, 0F, 1F, 0F);
+	            GL11.glRotatef(180, 1F, 0F, 0F);
+	            GL11.glRotatef(0, 1F, 0F, 1F);
+	            GL11.glTranslatef(-0.1F, -2F, -0.6F);
+	            GL11.glScalef(1.2F, 1.2F, 1.2F);
+	            
+	            wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
+	           
+	            GL11.glPopMatrix();
+	            break;
+	            
+        	case ENTITY:
+        		GL11.glPushMatrix();
+  	           
+ 	            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+ 	           
+ 	            GL11.glRotatef(0, 0F, 1F, 0F);
+ 	            GL11.glRotatef(150, 1F, 0F, 0F);
+ 	            GL11.glRotatef(00, 0F, 0F, 1F);
+ 	            GL11.glTranslatef(0F, -0.6F, 0F);
+ 	            GL11.glScalef(0.7F, 0.7F, 0.7F);
+ 	            
+ 	            wand.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
+ 	           
+ 	            GL11.glPopMatrix();
+ 	            break;
             default:
             	break;
         }
     }
 
     @Override
-    public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-       return true;
+    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+    	switch(type){
+           
+    		case EQUIPPED: return true;
+            case EQUIPPED_FIRST_PERSON: return true;
+            case ENTITY: return true;
+            default: return false;
+           
+    	}
     }
+
+	@Override
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+		return true;
+	}
 }

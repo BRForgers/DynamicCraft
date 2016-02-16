@@ -47,6 +47,7 @@ public class CommonProxy {
 	
     public void registerEvents() {
     	MinecraftForge.EVENT_BUS.register(new HandlerCommon());
+    	FMLCommonHandler.instance().bus().register(new HandlerCommon());
     }
     
     public void registerRender() {} //This MUST HAVE NOTHING
@@ -56,7 +57,7 @@ public class CommonProxy {
     public void registerEntities() {
         EntityRegistry.registerModEntity(EntityFireBall.class, "Fire Ball", 1, DynamicCraft.mod, 64, 10, true);
         
-        EntityHandler.registerMobs(EntityFireWizard.class, "fireWizard");
+        EntityHandler.registerMobs(EntityFireWizard.class, "fireWizard", 0x990000, 0x0);
         EntityRegistry.addSpawn(EntityFireWizard.class, 3, 0, 1, EnumCreatureType.monster, BiomeGenBase.hell);
         
         //Tile

@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft.container;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
 import brazillianforgers.dynamiccraft.api.magic.IMagicalItem;
-import brazillianforgers.dynamiccraft.items.ItemMagicFinder;
+import brazillianforgers.dynamiccraft.items.ItemMagicCollector;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -11,13 +11,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 
-public class InventoryMagicFinder implements IInventory{
+public class InventoryMagicCollector implements IInventory{
 	/** Provides NBT Tag Compound to reference */
 	private final ItemStack invItem;
 	
 	private ItemStack slot;
 	
-	public InventoryMagicFinder(ItemStack stack) {
+	public InventoryMagicCollector(ItemStack stack) {
 		invItem = stack;
 
 		// Create a new NBT Tag Compound if one doesn't already exist, or you will crash
@@ -140,7 +140,7 @@ public class InventoryMagicFinder implements IInventory{
 	}
 	
 	public void readFromNBT(NBTTagCompound NBTTagCompound) {
-		ItemMagicFinder mf = (ItemMagicFinder) invItem.getItem();
+		ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
 		mf.setMagic(invItem, NBTTagCompound.getShort("Magic"));
 
 		slot = ItemStack.loadItemStackFromNBT(NBTTagCompound);
@@ -151,7 +151,7 @@ public class InventoryMagicFinder implements IInventory{
  	*/
 	
 	public void writeToNBT(NBTTagCompound NBTTagCompound) {
-		ItemMagicFinder mf = (ItemMagicFinder) invItem.getItem();
+		ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
 		if (slot != null) {
 			slot.writeToNBT(NBTTagCompound);
 		}

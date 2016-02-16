@@ -2,16 +2,17 @@ package brazillianforgers.dynamiccraft.handler;
 
 import brazillianforgers.dynamiccraft.DynamicCraft;
 import brazillianforgers.dynamiccraft.container.ContainerInfusionAltar;
-import brazillianforgers.dynamiccraft.container.ContainerMagicFinder;
-import brazillianforgers.dynamiccraft.container.InventoryMagicFinder;
+import brazillianforgers.dynamiccraft.container.ContainerMagicCollector;
+import brazillianforgers.dynamiccraft.container.InventoryMagicCollector;
 import brazillianforgers.dynamiccraft.gui.GuiInfusionAltar;
-import brazillianforgers.dynamiccraft.gui.GuiMagicFinder;
-import brazillianforgers.dynamiccraft.items.ItemMagicFinder;
+import brazillianforgers.dynamiccraft.gui.GuiMagicCollector;
+import brazillianforgers.dynamiccraft.items.ItemMagicCollector;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler{
@@ -31,8 +32,8 @@ public class GuiHandler implements IGuiHandler{
 				} 
 				return null;
 			case DynamicCraft.guiIdMagicFinder:
-				if(stack.getItem() instanceof ItemMagicFinder) {
-					return new ContainerMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
+				if(stack.getItem() instanceof ItemMagicCollector) {
+					return new ContainerMagicCollector(player, player.inventory, stack, new InventoryMagicCollector(player.getHeldItem()));
 				}
 				return null;
 			default:
@@ -55,9 +56,8 @@ public class GuiHandler implements IGuiHandler{
 			} 
 			return null;
 		case DynamicCraft.guiIdMagicFinder:
-			if(stack.getItem() instanceof ItemMagicFinder) {
-				System.out.println("Sim, é instance de MagicFinder");
-				return new GuiMagicFinder(player, player.inventory, stack, new InventoryMagicFinder(player.getHeldItem()));
+			if(stack.getItem() instanceof ItemMagicCollector) {
+				return new GuiMagicCollector(player, player.inventory, stack, new InventoryMagicCollector(player.getHeldItem()));
 			}
 			return null;
 		default:

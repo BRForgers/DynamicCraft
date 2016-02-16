@@ -7,9 +7,11 @@ item.aquaRune.name=Aqua Rune
 item.earthRune.name=Earth Rune
 item.dynamicPearl.name=Dynamic Pearl
 item.dynamicShard.name=Dynamic Pearl Shard
+item.magicCollector.name=Magic Collector
 
 tile.oreDynamic.name=Dynamic Ore
 tile.blockInfusionAltar.name=Infusion Altar
+tile.blockDynamic.name=Dynamic Block
 
 entity.fireWizard.name=Fire Wizard
 

@@ -2,7 +2,7 @@ package brazillianforgers.dynamiccraft.handler;
 
 import brazillianforgers.dynamiccraft.items.DynamicGem;
 import brazillianforgers.dynamiccraft.items.ItemFireWand;
-import brazillianforgers.dynamiccraft.items.ItemMagicFinder;
+import brazillianforgers.dynamiccraft.items.ItemMagicCollector;
 import brazillianforgers.dynamiccraft.items.ItemRune;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
@@ -34,7 +34,7 @@ public class ItemHandler {
         dynamicPearl = new DynamicGem(DynamicGem.GemType.PEARL);
         dynamicShard = new DynamicGem(DynamicGem.GemType.SHARD);
         
-        magicFinder = new ItemMagicFinder().setUnlocalizedName("magicFinder");
+        magicFinder = new ItemMagicCollector().setUnlocalizedName("magicCollector");
     }
     
     private static void registerItems() {

@@ -32,7 +32,7 @@ public class WorldGenerator implements IWorldGenerator{
 	private void generateENd(Random random, World world, int x, int z) { }
 
 	private void generateOverworld(Random random, World world, int x, int z) {
-		addOreSpawn(BlockHandler.oreDynamic, world, random, x, z, 2, 4, 8, 0, 35);
+		addOreSpawn(BlockHandler.oreDynamic, world, random, x, z, 2, 4, 10, 0, 35);
 	}
 	
 	public void addOreSpawn(Block block, World world, Random random, int blockXPos, int blockZPos, int minVeinSize,

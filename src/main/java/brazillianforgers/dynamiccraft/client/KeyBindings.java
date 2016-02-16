@@ -9,12 +9,12 @@ import net.minecraft.util.StatCollector;
 
 public enum KeyBindings {
 	
-	MODE("key.dynamiccraft.mode", Keyboard.KEY_APOSTROPHE);
+	MODE("Change Mode", Keyboard.KEY_APOSTROPHE);
 
     private final KeyBinding keybinding;
 
     private KeyBindings(String keyName, int defaultKeyCode){
-        keybinding = new KeyBinding(keyName, defaultKeyCode, "key.categories.advancedMod");
+        keybinding = new KeyBinding(keyName, defaultKeyCode, "Dynamic Craft");
     }
 
     public KeyBinding getKeybind(){

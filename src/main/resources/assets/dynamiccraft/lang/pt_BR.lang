@@ -6,10 +6,12 @@ item.fireRune.name=Runa do Fogo
 item.aquaRune.name=Runa da Água
 item.earthRune.name=Runa da Terra
 item.dynamicPearl.name=Pérola Dynamic
-item.dynamicShard.name=Pedaço de Pérola Dynamic
+item.dynamicShard.name=Pepita de Pérola Dynamic
+item.magicCollector.name=Coletor de Magia
 
 tile.oreDynamic.name=Minério Dinâmico
 tile.blockInfusionAltar.name=Altar de Infusão
+tile.blockDynamic.name=Bloco Dynamic
 
 entity.fireWizard.name=Feiticeiro do Fogo
 
