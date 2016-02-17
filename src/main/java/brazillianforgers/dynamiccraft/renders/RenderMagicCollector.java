@@ -47,9 +47,10 @@ public class RenderMagicCollector implements IItemRenderer{
 	           
 	            Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 	           
-	            GL11.glRotatef(20, 0F, 0F, 1F);
-                GL11.glRotatef(-50, 1F, 0F, 0F);
-                GL11.glTranslatef(0.8F, 0.2F, -0.3F);
+	            GL11.glRotatef(0, 0F, 0F, 1F);
+                GL11.glRotatef(0, 1F, 0F, 0F);
+                GL11.glRotatef(220, 0F, 1F, 0F);
+                GL11.glTranslatef(-0.1F, 0.3F, -1F);
 	            
 	            this.model.render((Entity)data[1], 0, 0, 0, 0, 0, 0.0625F);
 	           

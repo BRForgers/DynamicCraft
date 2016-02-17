@@ -2,9 +2,7 @@ package brazillianforgers.dynamiccraft.container;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import brazillianforgers.dynamiccraft.container.slot.SlotInfusionMiddle;
-import brazillianforgers.dynamiccraft.container.slot.SlotInfusionPower;
-import brazillianforgers.dynamiccraft.container.slot.SlotInfusionResult;
+import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import brazillianforgers.dynamiccraft.tileentities.TileEntityInfusionAltar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -23,11 +21,26 @@ public class ContainerInfusionAltar extends Container{
 	public ContainerInfusionAltar(InventoryPlayer inv, TileEntityInfusionAltar tilealtar) {
 		this.altar = tilealtar;
         
-        this.addSlotToContainer(new SlotInfusionPower(tilealtar, 0, 8, 62));
+        this.addSlotToContainer(new Slot(tilealtar, 0, 8, 62) {
+        	@Override
+        	public boolean isItemValid(ItemStack stack) {
+        		return altar.isMagicalItem(stack) > 0;
+            }
+        });
         this.addSlotToContainer(new Slot(tilealtar, 1, 53, 16));
-        this.addSlotToContainer(new SlotInfusionMiddle(tilealtar, 2, 89, 6));
+        this.addSlotToContainer(new Slot(tilealtar, 2, 89, 6) {
+        	@Override
+        	public boolean isItemValid(ItemStack stack){
+                return stack.getItem() == ItemHandler.baseRune;
+            }
+        });
         this.addSlotToContainer(new Slot(tilealtar, 3, 125, 16));
-        this.addSlotToContainer(new SlotInfusionResult(tilealtar, 4, 88, 57));
+        this.addSlotToContainer(new Slot(tilealtar, 4, 88, 57) {
+        	@Override
+        	public boolean isItemValid(ItemStack stack) {
+        		return false;
+            }
+        });
         
         int i;
         for (i = 0; i < 3; ++i) {

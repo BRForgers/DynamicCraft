@@ -35,6 +35,12 @@ public class CraftingHandler{
 				"DDD",
 				'D', ItemHandler.dynamicPearl
 		);
+		
+		addRecipe(new ItemStack(ItemHandler.magicFinder), new Object[] {
+				"MMM",
+				"POP",
+				"MMM", 'M', new ItemStack(Blocks.log), 'P', new ItemStack(ItemHandler.dynamicPearl), 'O', new ItemStack(Items.ender_eye)
+		});
 	}
 	
 	private static void registerShapeless() {

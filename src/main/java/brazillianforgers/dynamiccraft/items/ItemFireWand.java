@@ -29,8 +29,8 @@ public class ItemFireWand extends ItemBaseWand{
     
     @Override
     public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
-    	if(ItemNBTHelper.getBoolean(item, "canAttack", true)) {
-    		ItemNBTHelper.setBoolean(item, "canAttack", false);
+    	if(canAttack(item)) {
+    		setCanAttack(item, false);
             
             extractMagic(item, 10);
             
@@ -68,7 +68,7 @@ public class ItemFireWand extends ItemBaseWand{
     		}
     	
             
-            ItemNBTHelper.setInt(item, "timer", 0);
+            resetTimer(item);
     	}
     	return item;
     }

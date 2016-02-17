@@ -9,7 +9,7 @@ import net.minecraft.util.StatCollector;
 
 public enum KeyBindings {
 	
-	MODE("Change Mode", Keyboard.KEY_APOSTROPHE);
+	MODE("Change Mode", Keyboard.KEY_L);
 
     private final KeyBinding keybinding;
 

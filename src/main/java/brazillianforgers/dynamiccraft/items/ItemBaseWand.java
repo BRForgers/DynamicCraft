@@ -36,9 +36,21 @@ public class ItemBaseWand  extends ItemMagic{
 		this.extract = extract;
 	}
 	
+	public boolean canAttack(ItemStack item) {
+		return ItemNBTHelper.getBoolean(item, "canAttack", true);
+	}
+	
 	public int getTimer(ItemStack item) {
         return ItemNBTHelper.getInt(item, "timer", 0);
     }
+	
+	public void resetTimer(ItemStack item) {
+		ItemNBTHelper.setInt(item, "timer", 0);
+	}
+	
+	public void setCanAttack(ItemStack item, boolean b) {
+		ItemNBTHelper.setBoolean(item, "canAttack", false);
+	}
 	
 	@Override
 	public void onUpdate(ItemStack item, World world, Entity ent, int i, boolean b) { 

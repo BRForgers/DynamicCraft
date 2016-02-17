@@ -5,6 +5,7 @@ import java.util.Random;
 import brazillianforgers.dynamiccraft.api.DynamicCraftAPI;
 import brazillianforgers.dynamiccraft.api.infusion.InfusionAltarFuel;
 import brazillianforgers.dynamiccraft.api.magic.IMagic;
+import brazillianforgers.dynamiccraft.api.magic.IMagicalItem;
 import brazillianforgers.dynamiccraft.handler.InfusionAltarManager;
 import brazillianforgers.dynamiccraft.handler.ItemHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -232,16 +233,20 @@ public class TileEntityInfusionAltar extends TileEntity implements ISidedInvento
 		if (!this.worldObj.isRemote){
 	    	if (isMagicalItem(this.slots[0]) > 0 && this.magic < this.maxMagic){
 	    		this.magic += isMagicalItem(this.slots[0]);
+	    		if(slots[0].getItem() instanceof IMagicalItem) {
+	    			((IMagicalItem) slots[0].getItem()).extractMagic(slots[0], ((IMagicalItem) slots[0].getItem()).getMagic(slots[0]));
+	    		}
 	
 	    		flag1 = true;
 	    	
-	    		if (this.slots[0] != null){
-	            		this.slots[0].stackSize--;
-	
-	            		if (this.slots[0].stackSize == 0){
-	                		this.slots[0] = this.slots[0].getItem().getContainerItem(slots[0]);
-	            		}
-	        	}                
+	    		if(!(slots[0].getItem() instanceof IMagicalItem))
+	    			if (this.slots[0] != null){
+	    				this.slots[0].stackSize--;
+	    				
+	    				if (this.slots[0].stackSize == 0){
+	    					this.slots[0] = this.slots[0].getItem().getContainerItem(slots[0]);
+	    				}
+	    			}                
 	    	}
 	
 	    	if (this.hasMagic() && this.canSmelt())
