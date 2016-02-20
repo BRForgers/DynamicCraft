@@ -26,7 +26,7 @@ public class ItemHandler {
     
     public static void initializeItems() {
         fireWand = new ItemFireWand().setUnlocalizedName("fireWand");
-        //aquaWand = new ItemAquaWand().setUnlocalizedName("aquaWand");
+        aquaWand = new ItemAquaWand().setUnlocalizedName("aquaWand");
         baseRune = new ItemRune(ItemRune.RuneType.BASE);
         aquaRune = new ItemRune(ItemRune.RuneType.AQUA);
         fireRune = new ItemRune(ItemRune.RuneType.FIRE);
@@ -38,7 +38,7 @@ public class ItemHandler {
     
     private static void registerItems() {
         register(fireWand);
-        //register(aquaWand);
+        register(aquaWand);
         register(baseRune);
         register(aquaRune);
         register(fireRune);

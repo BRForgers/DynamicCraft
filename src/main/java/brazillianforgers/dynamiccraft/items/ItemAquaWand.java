@@ -1,6 +1,6 @@
 package brazillianforgers.dynamiccraft.items;
 
-import brazillianforgers.dynamiccraft.entities.EntityFireBall;
+import brazillianforgers.dynamiccraft.entities.EntityAquaBall;
 import brazillianforgers.dynamiccraft.entities.EntityFireMode;
 import brazillianforgers.lib.ItemNBTHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,6 +27,9 @@ public class ItemAquaWand extends ItemBaseWand{
             		item.damageItem(101, player);
             	}
             }
+            
+            if(!world.isRemote)
+            	world.spawnEntityInWorld(new EntityAquaBall(player.worldObj, player, item, player));
     	
             resetTimer(item);
     	}

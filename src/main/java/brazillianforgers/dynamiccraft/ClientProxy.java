@@ -2,6 +2,7 @@ package brazillianforgers.dynamiccraft;
 
 import brazillianforgers.dynamiccraft.client.KeyBindings;
 import brazillianforgers.dynamiccraft.client.KeyInputHandler;
+import brazillianforgers.dynamiccraft.entities.EntityAquaBall;
 import brazillianforgers.dynamiccraft.entities.EntityFireBall;
 import brazillianforgers.dynamiccraft.entities.EntityFireMode;
 import brazillianforgers.dynamiccraft.entities.EntityFireWizard;
@@ -33,6 +34,7 @@ public class ClientProxy extends CommonProxy{
 	
     public void registerRender() {
         RenderingRegistry.registerEntityRenderingHandler(EntityFireBall.class, new RenderFireBall());
+        RenderingRegistry.registerEntityRenderingHandler(EntityAquaBall.class, new RenderFireBall());
         RenderingRegistry.registerEntityRenderingHandler(EntityFireWizard.class, new RenderFireWizard(new ModelBiped(), 0.3F));
         RenderingRegistry.registerEntityRenderingHandler(EntityFireMode.class, new RenderFireMode());
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfusionAltar.class, new RenderInfusionAltar(new TileEntityInfusionAltar()));
