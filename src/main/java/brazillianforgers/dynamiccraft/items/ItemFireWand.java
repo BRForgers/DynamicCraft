@@ -53,7 +53,7 @@ public class ItemFireWand extends ItemBaseWand{
 	    			double vy = look.yCoord;
 	    			double vz = look.zCoord;
 	    			
-	    			player.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)player.posX, (int)player.posY, (int)player.posZ, 0);
+	    			player.worldObj.playAuxSFXAtEntity(player, 1009, (int)player.posX, (int)player.posY, (int)player.posZ, 0);
 	    			
 					EntityFireMode ent = new EntityFireMode(player.worldObj, player, vx, vy, vz);
 					ent.setPosition(player.posX + vx, player.posY + vy, player.posZ + vz);
