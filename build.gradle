@@ -33,13 +33,15 @@ minecraft {
     runDir = "eclipse"
 }
 
-dependencies { 
-    println(" Adding dependencies!") 
+dependencies {
+    println("[DynamicCraft] Adding dependencies...")
     compile "codechicken:CodeChickenLib:1.7.10-1.1.3.138:dev" 
     compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev" 
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev" 
-    println(" Finished adding dependencies!") 
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.5.120:dev"
+    println("[DynamicCraft] Done.")
 }
+
+idea.module.inheritOutputDirs = true
 
 dependencies {
     // you may put jars on which you depend on in ./libs
