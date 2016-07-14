@@ -23,8 +23,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 
-public class ClientProxy extends CommonProxy{
-	
+public class ClientProxy extends CommonProxy {
+
     public void registerRender() {
         RenderingRegistry.registerEntityRenderingHandler(EntityFireBall.class, new RenderFireBall());
         RenderingRegistry.registerEntityRenderingHandler(EntityAquaBall.class, new RenderFireBall());
@@ -36,28 +36,28 @@ public class ClientProxy extends CommonProxy{
         MinecraftForgeClient.registerItemRenderer(ItemHandler.magicFinder, new RenderMagicCollector());
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(BlockHandler.infusionAltar), new RenderInfusionAltar(new TileEntityInfusionAltar()));
     }
-    
+
     public void registerRenderHandler() {
-        
+
     }
-    
+
     public void registerEvents() {
-    	super.registerEvents();
-    	
-    	MinecraftForge.EVENT_BUS.register(new HandlerClient());
-    	MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
-    	FMLCommonHandler.instance().bus().register(new HandlerClient());
-    	FMLCommonHandler.instance().bus().register(new KeyInputHandler());
+        super.registerEvents();
+
+        MinecraftForge.EVENT_BUS.register(new HandlerClient());
+        MinecraftForge.EVENT_BUS.register(new GuiMagicBar(Minecraft.getMinecraft()));
+        FMLCommonHandler.instance().bus().register(new HandlerClient());
+        FMLCommonHandler.instance().bus().register(new KeyInputHandler());
     }
-    
+
     public void registerNetworkStuff() {
-    	super.registerNetworkStuff();
-    	
-    	NetworkHandler.initClientMessages();
-    	for(KeyBindings kb : KeyBindings.values()) {
-    		KeyBinding key = kb.getKeybind();
-    		
-    		ClientRegistry.registerKeyBinding(key);
-    	}
+        super.registerNetworkStuff();
+
+        NetworkHandler.initClientMessages();
+        for (KeyBindings kb : KeyBindings.values()) {
+            KeyBinding key = kb.getKeybind();
+
+            ClientRegistry.registerKeyBinding(key);
+        }
     }
 }

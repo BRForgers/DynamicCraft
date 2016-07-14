@@ -19,7 +19,7 @@ public class ItemHandler {
         initializeItems();
         registerItems();
     }
-    
+
     public static void initializeItems() {
         fireWand = new ItemFireWand().setUnlocalizedName("fireWand");
         aquaWand = new ItemAquaWand().setUnlocalizedName("aquaWand");
@@ -31,7 +31,7 @@ public class ItemHandler {
         dynamicShard = new DynamicGem(DynamicGem.GemType.SHARD);
         magicFinder = new ItemMagicCollector().setUnlocalizedName("magicCollector");
     }
-    
+
     private static void registerItems() {
         register(fireWand);
         register(aquaWand);
@@ -43,8 +43,8 @@ public class ItemHandler {
         register(dynamicPearl);
         register(magicFinder);
     }
-    
+
     private static void register(Item item) {
-    	GameRegistry.registerItem(item, item.getUnlocalizedName());
+        GameRegistry.registerItem(item, item.getUnlocalizedName());
     }
 }

@@ -7,149 +7,150 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class InventoryMagicCollector implements IInventory{
-	/** Provides NBT Tag Compound to reference */
-	private final ItemStack invItem;
-	
-	private ItemStack slot;
-	
-	public InventoryMagicCollector(ItemStack stack) {
-		invItem = stack;
+public class InventoryMagicCollector implements IInventory {
+    /**
+     * Provides NBT Tag Compound to reference
+     */
+    private final ItemStack invItem;
 
-		// Create a new NBT Tag Compound if one doesn't already exist, or you will crash
-		if (!stack.hasTagCompound()) {
-			stack.setTagCompound(new NBTTagCompound());
-		}
-		// note that it's okay to use stack instead of invItem right there
-		// both reference the same memory location, so whatever you change using
-		// either reference will change in the other
+    private ItemStack slot;
 
-		// Read the inventory contents from NBT
-		readFromNBT(stack.getTagCompound());
-	}
+    public InventoryMagicCollector(ItemStack stack) {
+        invItem = stack;
 
-	@Override
-	public int getSizeInventory() {
-		return 1;
-	}
+        // Create a new NBT Tag Compound if one doesn't already exist, or you will crash
+        if (!stack.hasTagCompound()) {
+            stack.setTagCompound(new NBTTagCompound());
+        }
+        // note that it's okay to use stack instead of invItem right there
+        // both reference the same memory location, so whatever you change using
+        // either reference will change in the other
 
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return this.slot;
-	}
+        // Read the inventory contents from NBT
+        readFromNBT(stack.getTagCompound());
+    }
 
-	@Override
-	public ItemStack decrStackSize(int slotID, int i) {
-		if(slot != null) {
+    @Override
+    public int getSizeInventory() {
+        return 1;
+    }
+
+    @Override
+    public ItemStack getStackInSlot(int slot) {
+        return this.slot;
+    }
+
+    @Override
+    public ItemStack decrStackSize(int slotID, int i) {
+        if (slot != null) {
             ItemStack stack;
-            if(slot.stackSize <= i) {
+            if (slot.stackSize <= i) {
                 stack = slot;
                 slot = null;
                 return stack;
-            }else {
+            } else {
                 stack = slot.splitStack(i);
-                
-                if(slot.stackSize == 0) {
+
+                if (slot.stackSize == 0) {
                     slot = null;
                 }
                 return stack;
             }
-        }else {
+        } else {
             return null;
         }
-	}
+    }
 
-	@Override
-	public ItemStack getStackInSlotOnClosing(int I) {
-		if(slot != null) {
+    @Override
+    public ItemStack getStackInSlotOnClosing(int I) {
+        if (slot != null) {
             ItemStack itemstack = slot;
             slot = null;
             return itemstack;
         }
         return null;
-	}
+    }
 
-	@Override
-	public void setInventorySlotContents(int slotID, ItemStack stack) {
-		slot = stack;
-        
-        if(stack != null && stack.stackSize > this.getInventoryStackLimit()) {
+    @Override
+    public void setInventorySlotContents(int slotID, ItemStack stack) {
+        slot = stack;
+
+        if (stack != null && stack.stackSize > this.getInventoryStackLimit()) {
             stack.stackSize = this.getInventoryStackLimit();
         }
         markDirty();
-	}
+    }
 
-	@Override
-	public String getInventoryName() {
-		return "Magic Finder";
-	}
+    @Override
+    public String getInventoryName() {
+        return "Magic Finder";
+    }
 
-	@Override
-	public boolean hasCustomInventoryName() {
-		return false;
-	}
+    @Override
+    public boolean hasCustomInventoryName() {
+        return false;
+    }
 
-	@Override
-	public int getInventoryStackLimit() {
-		return 1;
-	}
-	
-	/**
-	 * This is the method that will handle saving the inventory contents, as it is called (or should be called!)
-	 * anytime the inventory changes. Perfect. Much better than using onUpdate in an Item, as this will also
-	 * let you change things in your inventory without ever opening a Gui, if you want.
-	 */
-	@Override
-	public void markDirty() {
-		for (int i = 0; i < getSizeInventory(); ++i)
-		{
-			if (getStackInSlot(i) != null && getStackInSlot(i).stackSize == 0) {
-				slot = null;
-			}
-		}
-		
-		// This line here does the work:		
-		writeToNBT(invItem.getTagCompound());
-	}
+    @Override
+    public int getInventoryStackLimit() {
+        return 1;
+    }
 
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		return true;
-	}
+    /**
+     * This is the method that will handle saving the inventory contents, as it is called (or should be called!)
+     * anytime the inventory changes. Perfect. Much better than using onUpdate in an Item, as this will also
+     * let you change things in your inventory without ever opening a Gui, if you want.
+     */
+    @Override
+    public void markDirty() {
+        for (int i = 0; i < getSizeInventory(); ++i) {
+            if (getStackInSlot(i) != null && getStackInSlot(i).stackSize == 0) {
+                slot = null;
+            }
+        }
 
-	@Override
-	public void openInventory() {
-		if (!invItem.hasTagCompound()) {
-			invItem.setTagCompound(new NBTTagCompound());
-		}
-		readFromNBT(invItem.getTagCompound());
-	}
+        // This line here does the work:
+        writeToNBT(invItem.getTagCompound());
+    }
 
-	@Override
-	public void closeInventory() {
-		markDirty();
-	}
+    @Override
+    public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
+        return true;
+    }
 
-	@Override
-	public boolean isItemValidForSlot(int slotID, ItemStack stack) {
-		return stack.getItem() instanceof IMagicalItem;
-	}
-	
-	public void readFromNBT(NBTTagCompound NBTTagCompound) {
-		ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
-		mf.setMagic(invItem, NBTTagCompound.getShort("Magic"));
+    @Override
+    public void openInventory() {
+        if (!invItem.hasTagCompound()) {
+            invItem.setTagCompound(new NBTTagCompound());
+        }
+        readFromNBT(invItem.getTagCompound());
+    }
 
-		slot = ItemStack.loadItemStackFromNBT(NBTTagCompound);
-	}
+    @Override
+    public void closeInventory() {
+        markDirty();
+    }
 
-	/**
- 	* Writes a tile entity to NBT.
- 	*/
-	
-	public void writeToNBT(NBTTagCompound NBTTagCompound) {
-		ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
-		if (slot != null) {
-			slot.writeToNBT(NBTTagCompound);
-		}
-	}
+    @Override
+    public boolean isItemValidForSlot(int slotID, ItemStack stack) {
+        return stack.getItem() instanceof IMagicalItem;
+    }
+
+    public void readFromNBT(NBTTagCompound NBTTagCompound) {
+        ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
+        mf.setMagic(invItem, NBTTagCompound.getShort("Magic"));
+
+        slot = ItemStack.loadItemStackFromNBT(NBTTagCompound);
+    }
+
+    /**
+     * Writes a tile entity to NBT.
+     */
+
+    public void writeToNBT(NBTTagCompound NBTTagCompound) {
+        ItemMagicCollector mf = (ItemMagicCollector) invItem.getItem();
+        if (slot != null) {
+            slot.writeToNBT(NBTTagCompound);
+        }
+    }
 }

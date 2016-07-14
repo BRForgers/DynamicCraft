@@ -19,7 +19,7 @@ import java.util.*;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class InfusionAltarHandler extends TemplateRecipeHandler{
+public class InfusionAltarHandler extends TemplateRecipeHandler {
 
     public static ArrayList<FuelPair> afuels;
     public static HashSet<Block> efuels;
@@ -40,21 +40,21 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
             }
     }
 
-	public String getRecipeName() {
-		return "Infusion Altar";
-	}
+    public String getRecipeName() {
+        return "Infusion Altar";
+    }
 
-	public String getGuiTexture() {
+    public String getGuiTexture() {
 
-		return new ResourceLocation(Strings.MODID, "textures/gui/infusionaltar.png").toString();
-	}
+        return new ResourceLocation(Strings.MODID, "textures/gui/infusionaltar.png").toString();
+    }
 
     public void loadTransferRects() {
-    	transferRects.add(new RecipeTransferRect(new Rectangle(78, 34, 24, 18), "infusion"));
+        transferRects.add(new RecipeTransferRect(new Rectangle(78, 34, 24, 18), "infusion"));
     }
 
     public Class<? extends GuiContainer> getGuiClass() {
-    	return GuiInfusionAltar.class;
+        return GuiInfusionAltar.class;
     }
 
     public TemplateRecipeHandler newInstance() {
@@ -68,7 +68,7 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
             Map<List<ItemStack>, ItemStack> recipes = (Map<List<ItemStack>, ItemStack>) InfusionAltarManager.getRecipeMap();
             for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
-            	
+
         } else
             super.loadCraftingRecipes(outputId, results);
     }
@@ -77,8 +77,8 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
         Map<List<ItemStack>, ItemStack> recipes = (Map<List<ItemStack>, ItemStack>) InfusionAltarManager.getRecipeMap();
         for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameType(recipe.getValue(), result))
-            	arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
-        	
+                arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue()));
+
     }
 
     public void loadUsageRecipes(String inputId, Object... ingredients) {
@@ -93,20 +93,20 @@ public class InfusionAltarHandler extends TemplateRecipeHandler{
         for (Entry<List<ItemStack>, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getValue(), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
-                
+
                 List l = new ArrayList();
-            	l.add(arecipe.ingred1);
-            	l.add(arecipe.ingred2);
-            	l.add(arecipe.ingred3);
-            	
+                l.add(arecipe.ingred1);
+                l.add(arecipe.ingred2);
+                l.add(arecipe.ingred3);
+
                 arecipe.setIngredientPermutation(l, ingredient);
                 arecipes.add(arecipe);
             }
     }
 
     public void drawExtras(int recipe) {
-    	drawProgressBar(6, 0, 177, 2, 9, 47, 48, 3);
-    	drawProgressBar(62, 13, 188, 0, 59, 28, 48, 1);
+        drawProgressBar(6, 0, 177, 2, 9, 47, 48, 3);
+        drawProgressBar(62, 13, 188, 0, 59, 28, 48, 1);
     }
 
     public String getOverlayIdentifier() {

@@ -16,50 +16,50 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class BlockInfusionAltar extends BlockContainer{
+public class BlockInfusionAltar extends BlockContainer {
 
-	public BlockInfusionAltar() {
-		super(Material.rock);
-		
-		setCreativeTab(DynamicCraft.dynamicTab);
+    public BlockInfusionAltar() {
+        super(Material.rock);
+
+        setCreativeTab(DynamicCraft.dynamicTab);
         setHardness(6F);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister iconRegister) {
-	}
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World world, int i) {
-		return new TileEntityInfusionAltar();
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister) {
+    }
 
-	@Override
+    @Override
+    public TileEntity createNewTileEntity(World world, int i) {
+        return new TileEntityInfusionAltar();
+    }
+
+    @Override
     public Item getItemDropped(int i, Random rand, int i2) {
         return Item.getItemFromBlock(BlockHandler.infusionAltar);
     }
-	
+
 
     @Override
     public boolean renderAsNormalBlock() {
-    	return false;
+        return false;
     }
 
     @Override
     public boolean isOpaqueCube() {
         return false;
     }
-    
+
     @Override
     public int getRenderType() {
-    	return -1;
+        return -1;
     }
-    
+
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-    	if(!world.isRemote) {
-    		FMLNetworkHandler.openGui(player, DynamicCraft.mod, DynamicCraft.guiIdInfusion, world, x, y, z);
-    	}
-    	return true;
+        if (!world.isRemote) {
+            FMLNetworkHandler.openGui(player, DynamicCraft.mod, DynamicCraft.guiIdInfusion, world, x, y, z);
+        }
+        return true;
     }
 }

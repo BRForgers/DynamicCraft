@@ -4,8 +4,8 @@ import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
 public enum KeyBindings {
-	
-	MODE("Change Mode", Keyboard.KEY_L);
+
+    MODE("Change Mode", Keyboard.KEY_L);
 
     private final KeyBinding keybinding;
 
@@ -13,11 +13,11 @@ public enum KeyBindings {
         keybinding = new KeyBinding(keyName, defaultKeyCode, "Dynamic Craft");
     }
 
-    public KeyBinding getKeybind(){
+    public KeyBinding getKeybind() {
         return keybinding;
     }
 
-    public boolean isPressed(){
+    public boolean isPressed() {
         return keybinding.isPressed();
     }
 }

@@ -9,15 +9,15 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 public class RenderFireBall extends Render {
-    
+
     private static final ResourceLocation texture = new ResourceLocation(Strings.MODID + ":textures/model/ModelFireBall.png");
 
     private final ModelFireBall model;
-    
+
     public RenderFireBall() {
         model = new ModelFireBall();
     }
-    
+
     @Override
     protected ResourceLocation getEntityTexture(Entity entity) {
         // this method should return your texture, which may be different based
@@ -25,13 +25,13 @@ public class RenderFireBall extends Render {
         // you may want to make a second method that takes your class:
         return getCustomTexture((EntityFireBall) entity);
     }
-    
+
     private ResourceLocation getCustomTexture(EntityFireBall entity) {
         // now you have access to your custom entity fields and methods, if any,
         // and can base the texture to return upon those
         return texture;
     }
-    
+
     @Override
     public void doRender(Entity entity, double x, double y, double z, float yaw, float partialTick) {
         // again, if you need some information from your custom entity class, you can cast to your
@@ -47,7 +47,7 @@ public class RenderFireBall extends Render {
 
         // typically you will at least want to translate for x/y/z position:
         GL11.glTranslated(x, y, z);
-        
+
         // if you are using a model, you can do so like this:
         model.render(entity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 
